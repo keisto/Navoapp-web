@@ -10,6 +10,11 @@ body {
   display: block;
 }
 
+.ui.jumbotron {
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 2px 15px;
+}
+
 .ui.input.error > input {
   background-color: #fff6f6;
   border-color: #e0b4b4;

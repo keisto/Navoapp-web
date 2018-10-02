@@ -8,6 +8,11 @@ body {
 .ui.form .error.message {
   display: block;
 }
+.ui.jumbotron {
+  //font-size: 3em !important;
+  color: white;
+  text-shadow: rgba(0,0,0,.4) 0 2px 15px;
+}
 .ui.input.error>input {
   background-color: #fff6f6;
   border-color: #e0b4b4;

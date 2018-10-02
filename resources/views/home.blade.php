@@ -14,7 +14,7 @@
             </div>
             <div class="statistic">
                 <div class="value">
-                    <img src="{{ asset('images/oil.svg') }}" style="width: 50px" class="ui inline image">
+                    <img src="{{ asset('images/punit.svg') }}" style="width: 50px" class="ui inline image">
                     {{ number_format($wells,0) }}
                 </div>
                 <div class="label">
@@ -63,7 +63,7 @@
                     <div class="header">Mobile App</div>
                     <div class="meta">Version 1.0</div>
                     <div class="description">
-                        Mobile app on <strong>ALL</strong> <u>iOS</u> Devices.
+                        Mobile app on <strong>ALL</strong> <u>iOS</u> Devices. <span style="color: indianred;">Version 1 only contains North Dakota.</span>
                     </div>
                 </div>
             </div>
@@ -91,9 +91,20 @@
                 <div class="content">
                     <img src="{{ asset('images/shovel.svg') }}" style="width: 32px" class="ui floated left image">
                     <div class="header">One Call Information</div>
-                    <div class="meta">Free for limited time</div>
+                    <div class="meta">View example</div>
                     <div class="description">
                         View nearest city, section, range, and township of the well.
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <div class="content">
+                    <div class="ui right floated green mini label">Various Plans</div>
+                    <img src="{{ asset('images/bill.svg') }}" style="width: 32px" class="ui floated left image">
+                    <div class="header">Subscriptions</div>
+                    <div class="meta">Individual & Teams</div>
+                    <div class="description">
+                        Select favorites, store history, add notes, send via text or copy for email.
                     </div>
                 </div>
             </div>
@@ -119,12 +130,12 @@
             </div>
             <div class="ui card">
                 <div class="content">
-                    <div class="ui right floated green mini label">Various Plans</div>
-                    <img src="{{ asset('images/bill.svg') }}" style="width: 32px" class="ui floated left image">
-                    <div class="header">Subscriptions</div>
-                    <div class="meta">Individual & business</div>
+                    <div class="ui right floated red mini label">High Priority</div>
+                    <img src="{{ asset('images/apple.svg') }}" style="width: 32px" class="ui floated left image">
+                    <div class="header">Mobile App</div>
+                    <div class="meta">Version 2.0</div>
                     <div class="description">
-                        Add favorites, store history, unlock features, and access developer API's.
+                        Mobile app on <strong>ALL</strong> <u>iOS</u> Devices.
                     </div>
                 </div>
             </div>
@@ -154,7 +165,7 @@
                     <div class="header">And More!</div>
                     <div class="meta">Looking for more info?</div>
                     <div class="description">
-                        <a mailto="keisertony@gmail.com">Email any requests or suggestions!</a>
+                        <a href="mailto:keisertony@gmail.com">Email any requests or suggestions!</a>
                     </div>
                 </div>
             </div>
