@@ -16,7 +16,7 @@
             @endnotsubscribed
             @guest
                  <a class="ui item" href="{{ route('login') }}">{{ __('Login') }}</a>
-                 <a class="ui item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                 <a id="register-button" class="ui item" href="{{ route('register') }}">{{ __('Register') }}</a>
             @else
                 <div id="user-nav" class="ui item">
                     <div class="ui floating dropdown">

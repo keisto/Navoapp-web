@@ -5,8 +5,8 @@
         </div>
     </div>
     <div class="ui container" style="display: flex; flex-grow: 1; height: 80%; justify-content: center; flex-direction: column;">
-        <div style="display: flex; justify-content: space-around; align-items: center;">
-            <h1 class="ui jumbotron inline header">
+        <div id="home-header" style="display: flex; justify-content: space-around; align-items: center;">
+            <h1 class="ui jumbotron inline header" >
                 <img src="{{ asset('images/punit.svg') }}">
                 <div class="content">
                     Oil & gas well locator made <u>simple</u>.

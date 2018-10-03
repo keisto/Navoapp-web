@@ -9993,6 +9993,24 @@ $(document).ready(function () {
             });
         }
     }
+
+    if ($('#home-header')) {
+        if (isMobile) {
+            $('#register-button').hide();
+            $('.page-header').css({
+                "height": "320px"
+            });
+            $('#home-header').css({
+                "flex-direction": "column"
+            });
+            $('#home-header img').css({
+                "display": "none"
+            });
+            $('.three.statistics').css({
+                "justify-content": "center"
+            });
+        }
+    }
     // Main Search Display
     if (!isMobile) {
         $('#wellsearch').keyup(function () {
