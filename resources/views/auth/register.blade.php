@@ -1,10 +1,10 @@
 @extends('layouts.splash')
 @section('content')
     <div class="v-center bg-repeat" style="min-height: 100vh">
-        <div class="ui center aligned container" style="margin: auto; display: block">
+        <div class="ui center aligned container" style="margin: auto; display: block;">
             <div class="ui grid center aligned">
                 <div class="thirteen wide mobile ten wide tablet six wide computer column">
-                    <img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">
+                    {{--<img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">--}}
                     <form class="ui large form" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="ui segment">
@@ -59,7 +59,7 @@
 
                     </form>
 
-                    <div class="ui olive inverted message">
+                    <div class="ui olive inverted message" style="margin-bottom: 20px">
                         Already registered? <a href="/login">Login</a>
                     </div>
                 </div>

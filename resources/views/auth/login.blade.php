@@ -4,7 +4,7 @@
         <div class="ui center aligned container" style="margin: auto; display: block">
             <div class="ui grid center aligned">
                 <div class="thirteen wide mobile ten wide tablet six wide computer column">
-                    <img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">
+                    {{--<img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">--}}
                     <form class="ui large form" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="ui segment">
@@ -49,7 +49,7 @@
                     <div class="ui yellow message">
                         Forgot Password? <a class="btn btn-link" href="{{ route('password.request') }}">Reset</a>
                     </div>
-                    <div class="ui blue message">
+                    <div class="ui blue message" style="margin-bottom: 20px">
                         <a class="btn btn-link" href="{{ route('activation.resend') }}">Resend Activation</a>
                     </div>
                 </div>

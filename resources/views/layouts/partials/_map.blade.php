@@ -45,6 +45,10 @@
             messageBuilder();
         });
 
+        if ($('#no-latlon-mobile')) {
+            if (!isMobile)
+            $('#no-latlon-mobile').css({'margin-top':'-144px'});
+        }
         messageBuilder();
         function messageBuilder() {
             messageVal = "";
@@ -122,26 +126,25 @@
         }
     </script>
     <script>
-        if (!isMobile) {
-            var map;
-            var latitude = Number("{{ $location->latitude ? $location->latitude : '' }}");
-            var longitude = Number("{{ $location->longitude ? $location->longitude : '' }}");
+        var map;
+        var latitude = Number("{{ $location->latitude ? $location->latitude : '' }}");
+        var longitude = Number("{{ $location->longitude ? $location->longitude : '' }}");
 
-            function loadMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: latitude, lng: longitude},
-                    zoom: 17,
-                    mapTypeId: 'satellite'
-                });
+        function loadMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: latitude, lng: longitude},
+                zoom: 17,
+                mapTypeId: 'satellite'
+            });
 
-                {{--var image = "{{ asset('images/point-a.svg') }}";--}}
-                var marker = new google.maps.Marker({
-                    position: {lat: latitude, lng: longitude},
-                    map: map,
-                    title: '{{ $location->well_name }}',
-                });
-            }
+            {{--var image = "{{ asset('images/point-a.svg') }}";--}}
+            var marker = new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                map: map,
+                title: '{{ $location->well_name }}',
+            });
         }
+
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=loadMap"></script>
 @endsection

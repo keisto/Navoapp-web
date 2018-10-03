@@ -39,6 +39,9 @@
     }
     if (isMobile) {
         $('#mobile-alert').css({"display":"flex"});
+        setTimeout(function () {
+            $('#mobile-alert').css({"display":"none"});
+        }, 2500);
     }
     // $('.message .close').on('click', function() {
     //     $(this).closest('.message').transition('fade');

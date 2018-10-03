@@ -4,7 +4,7 @@
         <div class="ui center aligned container" style="margin: auto; display: block">
             <div class="ui grid center aligned">
                 <div class="thirteen wide mobile ten wide tablet six wide computer column">
-                    <img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">
+                    {{--<img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">--}}
                     <form class="ui large form" method="POST" action="{{ route('password.request') }}">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">

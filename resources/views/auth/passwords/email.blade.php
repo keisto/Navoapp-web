@@ -9,7 +9,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">
+                    {{--<img src="{{ asset('images/navo-large.svg') }}" style="width: 120px" class="ui inline image">--}}
                     <form class="ui large form" method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="ui segment">

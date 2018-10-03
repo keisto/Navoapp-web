@@ -43,52 +43,68 @@ $( document ).ready(function() {
         $(this).closest('.message').transition('fade');
     });
 
-// Main Search Display
-    $('#wellsearch').keyup(function () {
-        if ($('#wellsearch').val() != "") {
-            // Has Value
+    console.log('search-a');
+    if ($('#search-header')) {
+        if (isMobile) {
+            $('.navo-1').remove();
+            $('.navo-2').remove();
             $('.fluid-results').css({
-               "display" : "block"
+                "display" : "block"
             });
             $('.page-header').css({
                 "height": "140px",
                 "min-height": "140px",
             });
-            $('.navo-1').css({
-                "padding-top": "0px",
-                "margin-bottom": "-30px",
-                "margin-top": "0px",
-                "opacity": "0",
-            });
-            setTimeout(function () {
-                $('.navo-2').css({
-                    "padding-right": "20px",
-                    "opacity": "1",
-                    "width": "auto",
-                    "display": "inline",
-                });
-            }, 800);
-        } else {
-            // NO VALUE RESTORE DEFAULT
-            $('.page-header').css({
-                "height": "50vh",
-                "min-height": "320px",
-            });
-            $('.navo-1').css({
-                "padding-top": "20vh",
-                "margin": "calc(2rem - 0.14285714em ) 0em 1rem",
-                "opacity": "1",
-            });
-            $('.fluid-results').css({
-                "display" : "none"
-            });
-            setTimeout(function () {
-                $('.navo-2').css({
-                    "padding-right": "-300px",
-                    "opacity": "0",
-                    "display": "none",
-                });
-            }, 800);
         }
-    });
+    }
+// Main Search Display
+    if (!isMobile) {
+        $('#wellsearch').keyup(function () {
+            if ($('#wellsearch').val() != "") {
+                // Has Value
+                $('.fluid-results').css({
+                    "display": "block"
+                });
+                $('.page-header').css({
+                    "height": "140px",
+                    "min-height": "140px",
+                });
+                $('.navo-1').css({
+                    "padding-top": "0px",
+                    "margin-bottom": "-30px",
+                    "margin-top": "0px",
+                    "opacity": "0",
+                });
+                setTimeout(function () {
+                    $('.navo-2').css({
+                        "padding-right": "20px",
+                        "opacity": "1",
+                        "width": "auto",
+                        "display": "inline",
+                    });
+                }, 800);
+            } else {
+                // NO VALUE RESTORE DEFAULT
+                $('.page-header').css({
+                    "height": "50vh",
+                    "min-height": "320px",
+                });
+                $('.navo-1').css({
+                    "padding-top": "20vh",
+                    "margin": "calc(2rem - 0.14285714em ) 0em 1rem",
+                    "opacity": "1",
+                });
+                $('.fluid-results').css({
+                    "display": "none"
+                });
+                setTimeout(function () {
+                    $('.navo-2').css({
+                        "padding-right": "-300px",
+                        "opacity": "0",
+                        "display": "none",
+                    });
+                }, 800);
+            }
+        });
+    }
 });

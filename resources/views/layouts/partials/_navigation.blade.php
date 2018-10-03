@@ -1,13 +1,12 @@
-<div class="ui secondary inverted menu" style="padding-top: 1em; text-shadow: black 0 1px 10px">
+
     @guest
-        <a class="item" href="{{ route('home') }}">
-            Home
-        </a>
-        <a class="item" href="#features">
-            Features
+        <a class="item" href="{{ route('home') }}" style="padding-top: 4px; padding-bottom: 4px">
+            <img src="{{ asset('images/navo-large-solid.svg') }}" height="28px">
+            Navo
         </a>
     @else
         <a class="item" href="{{ route('search') }}">
+            <i class="search icon"></i>
             Search
         </a>
     @endguest
@@ -22,11 +21,12 @@
                 <div id="user-nav" class="ui item">
                     <div class="ui floating dropdown">
                         <div class="ui text">
-                            <img src="https://api.adorable.io/avatars/285/{{ Auth::user()->name }}.png"
-                                 class="ui mini rounded image">{{ Auth::user()->name }} <i class="dropdown icon"></i></div>
+                            <img class="ui avatar image" style="border-radius: 4px" src="https://api.adorable.io/avatars/285/{{ Auth::user()->name }}.png">
+                            {{ Auth::user()->name }} <i class="dropdown icon"></i></div>
                         <div class="menu">
-                            <a class="item" href="{{ url("account") }}"><i class="user circle yellow icon"></i> Account</a>
-                            <div class="item"><i class="cogs teal icon"></i> Settings</div>
+                            <a class="item" href="{{ url("account") }}"><i class="user green yellow icon"></i> Account</a>
+                            <a class="item" href="{{ url("account") }}"><i class="star circle yellow icon"></i> Favorites</a>
+                            {{--<div class="item"><i class="cogs teal icon"></i> Settings</div>--}}
                             <div class="divider"></div>
                             <a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="sign out red icon"></i> {{ __('Logout') }}
@@ -39,4 +39,3 @@
                 </div>
             @endguest
     </div>
-</div>

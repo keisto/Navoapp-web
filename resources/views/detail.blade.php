@@ -4,7 +4,9 @@
     <div class="page-header" id="map" style="border-bottom: 1px solid #c0c1c2" class="computer only">
         <div class="mobile only">
             <div class="ui center aligned container">
-                @include("layouts.partials._navigation")
+                <div class="ui secondary inverted menu" style="padding-top: 1em; text-shadow: black 0 1px 10px">
+                    @include("layouts.partials._navigation")
+                </div>
             </div>
             <div style="height: 50px; overflow: hidden;" >
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 12%; width: 100%; margin-bottom: -1px">
@@ -17,7 +19,9 @@
     @else
     <div class="page-header">
         <div class="ui center aligned container">
-            @include("layouts.partials._navigation")
+            <div class="ui secondary inverted menu" style="padding-top: 1em; text-shadow: black 0 1px 10px">
+                @include("layouts.partials._navigation")
+            </div>
             <h2 class="ui centered orange message">Latitude & Longitude not found. Cannot display map</h2>
         </div>
 
@@ -27,7 +31,7 @@
             </svg>
         </div>
     </div>
-    <div class="ui container" style="margin-top: -144px; margin-bottom: 44px;">
+    <div class="ui container" id="no-latlon-mobile" style="margin-top: 0; margin-bottom: 44px;">
     @endif
 
         <div class="ui floating padded segment">

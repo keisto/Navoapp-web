@@ -46,7 +46,7 @@ body {
 }
 .bg-repeat {
   background-image: url("/images/header-pattern.png");
-  background-color: #0074AD;
+  background-color: #2185D0;
   background-position: center;
   position: relative;
   top: 0;
@@ -61,7 +61,7 @@ body {
   //box-shadow: 0px 20px 150px rgba(0,0,0,.5) inset;
   background-position: center;
   background-image: url("/images/header-pattern.png");
-  background-color: #0074AD;
+  background-color: #2185D0;
   -moz-transition: all 0.75s ease-in;
   -webkit-transition: all 0.75s ease-in;
   -ms-transition: all 0.75s ease-in;
@@ -157,9 +157,16 @@ svg {
   height: 20px;
 }
 
+#search-input {
+  width: 60%;
+}
+
 @media (max-width: 699px) {
   .svg--lg {
     display: none;
+  }
+  #search-input {
+    width: 95%;
   }
   .page-header {
     height: 20vh;
