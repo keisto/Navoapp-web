@@ -10,6 +10,7 @@
         "edwindayot/faker-provider-animals": "^1.0",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/cashier": "^7.2",
         "laravel/framework": "5.7.*",
         "laravel/scout": "^5.0",

@@ -11,7 +11,7 @@ Route::get('/test', 'HomeController@test')->name('test');
 /**
  * Plans
  */
-
+//
 Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
     Route::get('/','Subscription\PlanController@index')->name('index');
 //    Route::get('/teams','Subscription\PlanController@teams')->name('teams');
