@@ -13,22 +13,22 @@
                     <form class="ui large form" method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="ui segment">
-                            <div class="field">
+                            <div class="field {{ $errors->has('email') ? 'error' : '' }}">
                                 <div class="ui left icon input">
                                     <i class="grey mail icon"></i>
-                                    <input id="email" type="email" placeholder="E-mail Address" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input id="email" type="email" placeholder="E-mail Address" name="email" value="{{ old('email') }}">
                                 </div>
                             </div>
                             @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <div class="ui error message">
+                                    {{ $errors->first('email') }}
+                                </div>
                             @endif
 
                             <button type="submit" class="ui fluid large blue submit button">Email Reset Link</button>
                         </div>
                     </form>
-                    <a href="{{ url()->previous() }}" class="ui fluid submit button" style="margin-top: 12px">Cancel</a>
+                    <a href="{{ route('login') }}" class="ui black fluid button" style="margin-top: 12px">Back to Login</a>
                 </div>
             </div>
         </div>

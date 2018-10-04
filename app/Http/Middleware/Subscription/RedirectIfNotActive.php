@@ -16,7 +16,7 @@ class RedirectIfNotActive
     public function handle($request, Closure $next)
     {
         if (!auth()->check() || auth()->user()->doesNotHaveSubscription()) {
-            return redirect()->route('plans.index')->with('error', 'Subscription not active. You\'ll need a plan to search');
+            return redirect()->route('plans.index')->with('warning', 'Subscription not active. You\'ll need a plan to search');
 
         }
         return $next($request);

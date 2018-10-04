@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/plan';
 
     /**
      * Create a new controller instance.
@@ -83,20 +83,25 @@ class RegisterController extends Controller
             "Nightingale", "Octopus", "Okapi", "Opossum", "Oryx", "Ostrich", "Otter", "Owl", "Ox", "Oyster", "Panther", "Parrot", "Partridge", "Peafowl",
             "Pelican", "Penguin", "Pheasant", "Pig", "Pigeon", "Polar-bear", "Pony", "Porcupine", "Porpoise", "Prairie-dog", "Quail", "Quelea", "Quetzal", "Rabbit", "Raccoon", "Rail", "Ram", "Rat", "Raven", "Red-deer", "Red-panda", "Reindeer", "Rhinoceros", "Rook", "Salamander", "Salmon", "Sand-dollar", "Sandpiper", "Sardine", "Scorpion", "Sea-lion", "Sea-urchin", "Seahorse", "Seal", "Shark", "Sheep", "Shrew", "Skunk", "Snail", "Snake", "Sparrow", "Spider", "Spoonbill", "Squid", "Squirrel", "Starling", "Stingray", "Stinkbug", "Stork", "Swallow", "Swan", "Tapir", "Tarsier", "Termite", "Tiger", "Toad", "Trout", "Turkey", "Turtle", "Vicuña", "Viper", "Vulture", "Wallaby", "Walrus", "Wasp", "Water-buffalo", "Weasel", "Whale", "Wolf", "Wolverine", "Wombat", "Woodcock", "Woodpecker", "Worm", "Wren", "Yak", "Zebra"
         );
-        return User::create([
+
+        $user = User::create([
             'name' => "Anonymous " . $animals[random_int(0, count($animals)-1)],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'activated' => false,
+            'activated' => true,
         ]);
-    }
-
-    protected function registered(Request $request, $user) {
-
-        $this->guard()->logout();
 
         event(new UserSignedUp($user));
 
-        return redirect($this->redirectPath())->with('success', 'Please check your email for activation link.');
+        return $user;
     }
+
+//    protected function registered(Request $request, $user) {
+//
+//        $this->guard()->logout();
+//
+//
+//
+//        return redirect($this->redirectPath())->with('success', 'Please check your email for activation link.');
+//    }
 }

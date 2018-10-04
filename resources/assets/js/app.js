@@ -42,8 +42,15 @@ $( document ).ready(function() {
     $('.message .close').on('click', function () {
         $(this).closest('.message').transition('fade');
     });
+// Flash Notifications
+    if($('#flash-notification')) {
+        $('#flash-notification').css({'z-index':1000});
+        setTimeout(function () {
+           $('#flash-notification').fadeOut(750);
+        }, 2500);
+    }
 
-    console.log('search-a');
+// Mobile modifications
     if ($('#search-header')) {
         if (isMobile) {
             $('.navo-1').remove();

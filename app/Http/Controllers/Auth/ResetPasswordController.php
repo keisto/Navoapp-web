@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/account';
 
     /**
      * Create a new controller instance.
@@ -43,13 +43,13 @@ class ResetPasswordController extends Controller
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    protected function sendResetResponse($response)
-    {
-        if ($this->guard()->user()->hasNotActivated()) {
-            $this->guard()->logout();
-        }
-        return redirect($this->redirectPath())
-            ->with('status', trans($response));
-    }
+//    protected function sendResetResponse($response)
+//    {
+//        if ($this->guard()->user()->hasNotActivated()) {
+//            $this->guard()->logout();
+//        }
+//        return redirect($this->redirectPath())
+//            ->with('status', trans($response));
+//    }
 
 }

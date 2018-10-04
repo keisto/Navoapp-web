@@ -43,15 +43,13 @@
 
                         </div>
                     </form>
-                    <div class="ui olive message">
+                    <div class="ui black message">
+                        Forgot Password? <a href="{{ route('password.request') }}">Reset</a> or
                         Not registered? <a href="{{ route('register') }}">Sign Up</a>
                     </div>
-                    <div class="ui yellow message">
-                        Forgot Password? <a class="btn btn-link" href="{{ route('password.request') }}">Reset</a>
-                    </div>
-                    <div class="ui blue message" style="margin-bottom: 20px">
-                        <a class="btn btn-link" href="{{ route('activation.resend') }}">Resend Activation</a>
-                    </div>
+                    {{--<div class="ui blue message" style="margin-bottom: 20px">--}}
+                        {{--<a class="btn btn-link" href="{{ route('activation.resend') }}">Resend Activation</a>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>

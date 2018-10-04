@@ -9,3 +9,9 @@
         {{ session('error') }}
     @endcomponent
 @endif
+
+@if(session()->has('warning'))
+    @component('layouts.partials.alerts._component', ['type' => 'orange', 'header' => 'Warning!', 'icon' => 'exclamation triangle icon'])
+        {{ session('warning') }}
+    @endcomponent
+@endif

@@ -1,6 +1,6 @@
 @extends('layouts.splash')
 @section('content')
-    <div class="v-center bg-repeat" style="min-height: 100vh">
+    <div class="v-center bg-repeat" style="min-height: 100%;">
         <div class="ui center aligned container" style="margin: auto; display: block;">
             <div class="ui grid center aligned">
                 <div class="thirteen wide mobile ten wide tablet six wide computer column">
@@ -59,8 +59,8 @@
 
                     </form>
 
-                    <div class="ui olive inverted message" style="margin-bottom: 20px">
-                        Already registered? <a href="/login">Login</a>
+                    <div class="ui black inverted message" style="margin-bottom: 20px">
+                        Already registered? <a href="{{ route('login') }}">Login</a>
                     </div>
                 </div>
             </div>
