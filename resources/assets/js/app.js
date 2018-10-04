@@ -58,10 +58,12 @@ $( document ).ready(function() {
             $('.fluid-results').css({
                 "display" : "block"
             });
-            $('.page-header').css({
-                "height": "140px",
-                "min-height": "140px",
-            });
+            if (!$('#search-header')) {
+                $('.page-header').css({
+                    "height": "140px",
+                    "min-height": "140px",
+                });
+            }
         }
     }
 
