@@ -1,10 +1,12 @@
 @extends('account.layouts.default')
 @section('account.content')
-    <form class="ui form" method="POST" action="{{ route('account.subscription.card.store') }}" id="card-form">
-        @csrf
-        <p>Your new card will be used for future payments.</p>
-        <button type="submit" class="ui violet submit button" id="update">Update Card</button>
-    </form>
+    <div class="ui segment">
+        <form class="ui form" method="POST" action="{{ route('account.subscription.card.store') }}" id="card-form">
+            @csrf
+            <button type="submit" class="ui violet submit button" id="update">Update Card</button>
+            <span>Your new card will be used for future payments.</span>
+        </form>
+    </div>
 @endsection
 
 @section('scripts')
@@ -39,8 +41,5 @@
 
             e.preventDefault();
         });
-
-
-
     </script>
 @endsection

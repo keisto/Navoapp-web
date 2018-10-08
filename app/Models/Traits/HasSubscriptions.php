@@ -45,4 +45,14 @@ trait HasSubscriptions {
     public function isCustomer() {
         return $this->hasCardOnFile();
     }
+
+    public function hasOneCall() {
+        if ($this->hasPiggybackSubscription()) {
+            return true;
+        }
+        if ($this->plan()->gateway_id != "basic_month" && $this->plan()->gateway_id != "basic_year") {
+            return true;
+        }
+        return false;
+    }
 }

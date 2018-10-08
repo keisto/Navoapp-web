@@ -29,6 +29,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('dist/semantic.js') }}"></script>
 <script src="{{ asset('dist/calendar.min.js') }}"></script>
+<script src="{{ asset('js/tablesorter.js') }}"></script>
 <script>
     var isMobile = false; //initiate as false
     // device detection

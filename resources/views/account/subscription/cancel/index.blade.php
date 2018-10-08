@@ -1,8 +1,10 @@
 @extends('account.layouts.default')
 @section('account.content')
-    <form class="ui form" method="POST" action="{{ route('account.subscription.cancel.store') }}">
-        @csrf
-        <p>Confirm Subscription Cancellation</p>
-        <button type="submit" class="ui yellow submit button">Cancel Subscription</button>
-    </form>
+    <div class="ui segment">
+        <form class="ui form" method="POST" action="{{ route('account.subscription.cancel.store') }}">
+            @csrf
+            <button type="submit" class="ui yellow submit button">Cancel Subscription</button>
+            <span>Click to confirm subscription cancellation.</span>
+        </form>
+    </div>
 @endsection

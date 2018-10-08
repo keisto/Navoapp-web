@@ -8,7 +8,7 @@
     {{--:sort-by="['count:desc']">--}}
     <ais-refinement-list attribute-name="state">
         <h3 slot="header">
-            <i class="map outline icon"></i>
+            <i class="map outline blue icon"></i>
             State
         </h3>
     </ais-refinement-list>

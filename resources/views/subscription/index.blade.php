@@ -2,25 +2,16 @@
 @section('content')
     @include('layouts.partials._home-header')
     <div class="ui padder container">
-        <div class="ui secondary menu">
-            <a class="item active" data-tab="solo">Individual</a>
-            <a class="item" data-tab="team">Teams <span class="ui green label">Great for Businesses!</span></a>
-        </div>
         <form id="payment-form" action="{{ route('subscription.store') }}" method="POST">
             @csrf
-            <div class="ui tab segment active" data-tab="solo">
+            <div class="ui segment">
                 <div class="ui form">
                     <div class="field {{ $errors->has('plan') ? 'error' : '' }}">
                         <select class="ui fluid dropdown" id="plan" name="plan">
-                            @foreach($soloPlans as $plan)
+                            @foreach($plans as $plan)
                                 <option value="{{ $plan->gateway_id }}"
-                                        {{ request('plan') == $plan->slug || old('plan') == $plan->gateway_id ? 'selected="selected"' : '' }}
-                                >{{ $plan->name }} - ({{ $plan->price }} - {{ $plan->slug }})</option>
-                            @endforeach
-                            @foreach($teamPlans as $plan)
-                                <option value="{{ $plan->gateway_id }}"
-                                        {{ request('plan') == $plan->slug || old('plan') == $plan->gateway_id ? 'selected="selected"' : '' }}
-                                >{{ $plan->name }} - ({{ $plan->price }} - {{ $plan->slug }})</option>
+                                        {{ request('plan') == $plan->slug || old('plan') == $plan->gateway_id ? 'selected="selected"' : '' }}>
+                                    {{ $plan->name }} - (${{ $plan->price }} USD {{ $plan->teams_enabled ? "/ user" : "" }} - {{ $plan->recurring }})</option>
                             @endforeach
                         </select>
                     </div>
@@ -47,19 +38,7 @@
                     <button id="pay" type="submit" class="ui blue submit button">Pay</button>
                 </div>
             </div>
-
-
-
-            <div class="ui tab segment" data-tab="team">
-                <ul>
-                    @foreach($teamPlans as $plan)
-                        <li>{{ $plan->name }} - {{ $plan->price }}</li>
-                    @endforeach
-                </ul>
-
-            </div>
         </form>
-
     </div>
 @endsection
 @section('scripts')

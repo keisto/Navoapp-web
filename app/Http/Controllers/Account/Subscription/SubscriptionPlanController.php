@@ -24,13 +24,19 @@ class SubscriptionPlanController extends Controller
 //            $user->team->users()->each(function () {
 //               // Mail each user to let them know it was cancelled...
 //            });
-
             $user->team->users()->detach();
+//            ->incrementQuantity(5);
         }
 
         $user->subscription('main')->swap($plan->gateway_id);
 
         return back()->with('success', 'Your subscription was updated successfully.');
+    }
+
+    public function increase(Request $request) {
+        $user = $request->user();
+        $user->subscription('main')->updateQuantity($request->team_size);
+        return redirect()->route('account.subscription.team.index')->with('success', 'Your team size was increased successfully.');
     }
 
     protected function downgradesFromTeamPlan(User $user, Plan $plan) {

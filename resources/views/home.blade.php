@@ -58,22 +58,11 @@
             </div>
             <div class="ui card">
                 <div class="content">
-                    <div class="ui right floated yellow mini label">Update On the Way</div>
                     <img src="{{ asset('images/apple.svg') }}" style="width: 32px" class="ui floated left image">
                     <div class="header">Mobile App</div>
                     <div class="meta">Version 1.0</div>
                     <div class="description">
                         Mobile app on <strong>ALL</strong> <u>iOS</u> Devices. <span style="color: indianred;">Version 1 only contains North Dakota.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="ui card">
-                <div class="content">
-                    <img src="{{ asset('images/export.svg') }}" style="width: 32px" class="ui floated left image">
-                    <div class="header">Export Data</div>
-                    <div class="meta">By each State</div>
-                    <div class="description">
-                        Choose between JSON, XML, and CSV formats.
                     </div>
                 </div>
             </div>
@@ -136,6 +125,17 @@
                     <div class="meta">Version 2.0</div>
                     <div class="description">
                         Mobile app on <strong>ALL</strong> <u>iOS</u> Devices.
+                    </div>
+                </div>
+            </div>
+            <div class="ui card">
+                <div class="content">
+                    <div class="ui right floated red mini label">High Priority</div>
+                    <img src="{{ asset('images/export.svg') }}" style="width: 32px" class="ui floated left image">
+                    <div class="header">Export Data</div>
+                    <div class="meta">By each State</div>
+                    <div class="description">
+                        Choose between JSON, XML, and CSV formats.
                     </div>
                 </div>
             </div>

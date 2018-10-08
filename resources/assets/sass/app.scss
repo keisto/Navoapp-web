@@ -45,8 +45,8 @@ body {
   padding-bottom: 2em;
 }
 .bg-repeat {
-  background-image: url("/images/header-pattern.png");
-  background-color: #2185D0;
+  background-image: url("/images/pattern.svg");
+  background-color: #191E3A;
   background-position: center;
   position: relative;
   top: 0;
@@ -60,12 +60,22 @@ body {
   min-height: 320px;
   //box-shadow: 0px 20px 150px rgba(0,0,0,.5) inset;
   background-position: center;
-  background-image: url("/images/header-pattern.png");
-  background-color: #2185D0;
+  background-image: url("/images/pattern.svg");
+  background-color: #191E3A;
   -moz-transition: all 0.75s ease-in;
   -webkit-transition: all 0.75s ease-in;
   -ms-transition: all 0.75s ease-in;
   transition: all 0.75s ease-in;
+}
+.my-account {
+  padding: .5em;
+  background-position: center;
+  background-image: url("/images/pattern.svg");
+  background-size: contain;
+  background-color: #191E3A !important;
+  margin-top: 0 !important;;
+  text-shadow: black 0 1px 10px !important;;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25) !important;;
 }
 
 /* The location pointed to by the popup tip. */
@@ -246,7 +256,7 @@ svg {
  }
 
 .ais-refinement-list .icon {
-  color: #0074AD;
+  color: #191E3A;
 }
 
 .ais-refinement-list__label {
@@ -312,7 +322,7 @@ svg {
 }
 
 .ais-pagination__item a:hover, a:focus {
-  color: #0074AD;
+  color: #191E3A;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ais-pagination__item a:active {
@@ -321,7 +331,7 @@ svg {
 }
 .ais-highlight em {
   color: white;
-  background-color: #0074AD;
+  background-color: #191E3A;
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 4px;
@@ -335,4 +345,8 @@ svg {
 }
 .ais-pagination__item a:hover, a:focus {
  border: none;
+}
+
+.ui.top.pointing.dropdown > .left.menu:after, .ui.top.right.pointing.dropdown > .menu:after {
+  display: none;
 }

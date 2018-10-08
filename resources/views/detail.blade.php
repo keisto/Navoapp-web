@@ -84,12 +84,22 @@
                             <i class="map outline green icon"></i>
                             <div class="content">
                                 <div class="sub grey header">
-                                    {{ $location->cloest_city  == "" ? "" : "Closest City, " }}
-                                    State, {{ $location->county_name  == "" ? "" : "County," }} Country:</div>
-                                {{ $location->cloest_city  == "" ? "" : $location->cloest_city . ", " }}
-                                {{ $location->state  == "" ? "" : $location->state . ", " }}
-                                {{ $location->county_name  == "" ? "" : title_case($location->county_name) . " County, "}}
-                                {{ $location->country  == "" ? "United States" : $location->country }}
+                                    <span id="township_label">
+                                        {{ $location->cloest_city  == "" ? "City, " : "" }}
+                                    </span>
+                                    State -
+                                    @hasonecall
+                                        {{ $location->county_name  == "" ? "" : "County, " }}
+                                    @endhasonecall
+                                    Country:</div>
+                                    <span id="township">
+                                        {{ $location->closest_city  == "" ? "" : $location->closest_city . ", " }}
+                                    </span>
+                                    {{ $location->state  == "" ? "" : $location->state }}
+                                    @hasonecall
+                                    {{ $location->county_name  == "" ? "" : "- " . title_case($location->county_name) . " County "}}
+                                    @endhasonecall
+                                <i style="position: relative; top: -4px" class="{{ $location->country  == "" ? "united states" : strtolower($location->country) }} flag"></i>
                             </div>
                         </h1>
                     </div>
@@ -101,7 +111,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="ten wide column">
+
+                    <div class="{{ auth()->user()->hasOneCall() ? "ten" : "sixteen" }} wide column">
                         <h1 class="ui header">
                             <i class="map pin red icon"></i>
                             <div class="content">
@@ -111,36 +122,38 @@
                             </div>
                         </h1>
                     </div>
-                    <div class="six wide column">
-                        <div class="ui grid">
-                            <div class="three column row">
-                                <div class="column">
-                                    <h1 class="ui header">
-                                        <div class="content">
-                                            <div class="sub grey header">Township:</div>
-                                            {{ $location->township  == "" ? "--" : $location->township }}
-                                        </div>
-                                    </h1>
-                                </div>
-                                <div class="column">
-                                    <h1 class="ui header">
-                                        <div class="content">
-                                            <div class="sub grey header">Range:</div>
-                                            {{ $location->range  == "" ? "--" : $location->range }}
-                                        </div>
-                                    </h1>
-                                </div>
-                                <div class="column">
-                                    <h1 class="ui header">
-                                        <div class="content">
-                                            <div class="sub grey header">Section:</div>
-                                            {{ $location->section  == "" ? "--" : $location->section }}
-                                        </div>
-                                    </h1>
+                    @hasonecall
+                        <div class="six wide column">
+                            <div class="ui grid">
+                                <div class="three column row">
+                                    <div class="column">
+                                        <h1 class="ui header">
+                                            <div class="content">
+                                                <div class="sub grey header">Township:</div>
+                                                {{ $location->township  == "" ? "--" : $location->township }}
+                                            </div>
+                                        </h1>
+                                    </div>
+                                    <div class="column">
+                                        <h1 class="ui header">
+                                            <div class="content">
+                                                <div class="sub grey header">Range:</div>
+                                                {{ $location->range  == "" ? "--" : $location->range }}
+                                            </div>
+                                        </h1>
+                                    </div>
+                                    <div class="column">
+                                        <h1 class="ui header">
+                                            <div class="content">
+                                                <div class="sub grey header">Section:</div>
+                                                {{ $location->section  == "" ? "--" : $location->section }}
+                                            </div>
+                                        </h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endhasonecall
                 </div>
             </div>
 

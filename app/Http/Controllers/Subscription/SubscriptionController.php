@@ -10,18 +10,23 @@ use App\Models\Plan;
 class SubscriptionController extends Controller
 {
     public function index() {
-        $teamPlans = Plan::active()->team()->get();
-        $soloPlans = Plan::active()->solo()->get();
+        $plans = Plan::active()->get();
 
-        return view('subscription.index', compact('teamPlans', 'soloPlans'));
+        return view('subscription.index', compact('plans'));
     }
 
     public function store(SubscriptionStoreRequest $request) {
 
-        $subscription = $request->user()->newSubscription('main', $request->plan)->trialDays(3);
+//        $subscription = $request->user()->newSubscription('main', $request->plan)->trialDays(3);
+        $subscription = $request->user()->newSubscription('main', $request->plan);
 
         if ($request->has('coupon')) {
             $subscription->withCoupon($request->coupon);
+        }
+
+        $plan = Plan::where('gateway_id', '=', $request->plan)->limit(1)->get()->first();
+        if ($plan->teams_enabled) {
+            $subscription->quantity($plan->teams_limit);
         }
 
         $subscription->create($request->token);

@@ -19,9 +19,7 @@
                 </div>
             </div>
             <div class="twelve wide computer only twelve wide tablet only sixteen wide mobile only column">
-                <div class="ui segment">
                     @yield('account.content')
-                </div>
             </div>
         </div>
     </div>

@@ -2,35 +2,100 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $("form").submit(function(e){
-                e.preventDefault(e);
-                axios.post("/location/favorite/{{$location->id}}").then(response => {
-                    if (response.data == "removed") {
-                        $('#favorite_button').removeClass('yellow').removeClass('button')
-                            .addClass('basic').addClass('button');
-                        $('#favorite_button').attr('data-tooltip', 'Location Removed.');
-                    } else if (response.data == "added") {
-                        $('#favorite_button').removeClass('basic').removeClass('button')
-                            .addClass('yellow').addClass('button');
-                        $('#favorite_button').attr('data-tooltip', 'Location Added!');
-                    } else if (response.data == "error") {
-                        $('#favorite_button').attr('data-tooltip', 'Failed to Add.');
-                    }
-                }).catch(error => {
+        $("form").submit(function(e){
+            e.preventDefault(e);
+            axios.post("/location/favorite/{{$location->id}}").then(response => {
+                if (response.data == "removed") {
+                    $('#favorite_button').removeClass('yellow').removeClass('button')
+                        .addClass('basic').addClass('button');
+                    $('#favorite_button').attr('data-tooltip', 'Location Removed.');
+                } else if (response.data == "added") {
+                    $('#favorite_button').removeClass('basic').removeClass('button')
+                        .addClass('yellow').addClass('button');
+                    $('#favorite_button').attr('data-tooltip', 'Location Added!');
+                } else if (response.data == "error") {
                     $('#favorite_button').attr('data-tooltip', 'Failed to Add.');
-                });
+                }
+            }).catch(error => {
+                $('#favorite_button').attr('data-tooltip', 'Failed to Add.');
             });
         });
 
-        $('.ui.modal').modal({ blurring: true });
+        $('.ui.modal').modal({ blurring: false });
         var well_name = "{{ $location->well_name }}";
         var well_api = "{{ $location->api_number }}";
         var operator_name = "{{ $location->current_operator }}";
-        var cityState = "{{ $location->closest_city ? $location->closest_city .", ": ""}}{{ $location->state ? $location->state : ""}}";
+        var city = "{{ $location->closest_city ? $location->closest_city : ""}}";
+        var state = "{{ $location->state ? $location->state : ""}}";
+        var cityState = city + ", " + state;
         var latLon = String("{{ $location->latitude ? $location->latitude : 0 }},{{ $location->longitude ? $location->longitude : 0 }}");
         var androidLink = "https://www.google.com/maps/search/?api=1&query=" + latLon;
         var appleLink = "http://maps.apple.com/?q=" + latLon;
+
+        // TODO: More security.... on thi function... yeah?
+        if ($('#township').attr('id')) {
+            if (city == "") {
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latLon + '&key={{ env('GOOGLE_MAP_KEY') }}')
+                    .then(response => {
+                        var backupCity = "";
+                        $.each(response.data.results[0].address_components, function (i, address_component) {
+                            if (address_component.types[0] == "locality"){
+                                itemLocality = address_component.long_name;
+                                $('#township').text(itemLocality + ", ");
+                                $('#township_label').text("City, ");
+                                city = itemLocality;
+                                cityState = city + ", " + "{{ $location->state ? $location->state : ""}}";
+                                axios.get(window.location.href + '/city/' + city);
+                                getCityCoordinates();
+                            }
+                            if (address_component.types[0] == "neighborhood"){
+                                backupCity = address_component.long_name;
+                                console.log(backupCity);
+                            }
+                            if (address_component.types[0] == "administrative_area_level_1"){
+                                state = address_component.long_name;
+                            }
+                        });
+
+                        if (city.trim() == "") {
+                            $('#township').text(backupCity + ", ");
+                            $('#township_label').text("City, ");
+                            city = backupCity;
+                            cityState = backupCity + ", " + state;
+                            axios.get(window.location.href + '/city/' + backupCity);
+                            getCityCoordinates();
+                        }
+                    }).catch(error => {
+                        // Do something?
+                });
+            }
+        }
+
+        if (city != "") {
+            getCityCoordinates();
+        }
+        function getCityCoordinates() {
+            var bool = true;
+            if (bool) {
+                axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + city + '+' + state.split(' ').join('+') + '&key={{ env('GOOGLE_MAP_KEY') }}')
+                    .then(response => {
+                        var xlatLon = response.data.results[0].geometry.location;
+                        var xlat = xlatLon.lat;
+                        var xlon = xlatLon.lng;
+                        getDirections(xlat, xlon);
+                    });
+            }
+        }
+
+        function getDirections(lat, lon) {
+            axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=' + lat + ',' + lon +
+                '&destination=' + latLon + '&key={{ env('GOOGLE_MAP_KEY') }}').then(response => {
+                console.log(response.data);
+            });
+        }
+        // http://api.geonames.org/findNearestIntersectionJSON?formatted=true&lat=33.5020523071289&lng=-112.329467773438&username=keisto&style=full
+        // http://api.geonames.org/findNearbyStreetsJSON?formatted=true&lat=lat&lng=lon&username=keisto&style=full
+        // https://maps.googleapis.com/maps/api/directions/json?origin=\(nearLocation.coordinate.latitude),\(nearLocation.coordinate.longitude)&destination=\(lat),\(lon)&key=\(googleKey)
 
         var message = $('#text-message');
         var messageVal = $('#text-message').val();
@@ -134,7 +199,7 @@
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: latitude, lng: longitude},
                 zoom: 17,
-                mapTypeId: 'satellite'
+                mapTypeId: google.maps.MapTypeId.HYBRID
             });
 
             {{--var image = "{{ asset('images/point-a.svg') }}";--}}

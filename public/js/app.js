@@ -9986,38 +9986,6 @@ $(document).ready(function () {
         }, 2500);
     }
 
-    // Mobile modifications
-    if ($('#search-header')) {
-        if (isMobile) {
-            $('.navo-1').remove();
-            $('.navo-2').remove();
-            $('.fluid-results').css({
-                "display": "block"
-            });
-            $('.page-header').css({
-                "height": "140px",
-                "min-height": "140px"
-            });
-        }
-    }
-
-    if ($('#home-header')) {
-        if (isMobile) {
-            $('#register-button').hide();
-            $('.page-header').css({
-                "height": "320px"
-            });
-            $('#home-header').css({
-                "flex-direction": "column"
-            });
-            $('#home-header img').css({
-                "display": "none"
-            });
-            $('.three.statistics').css({
-                "justify-content": "center"
-            });
-        }
-    }
     // Main Search Display
     if (!isMobile) {
         $('#wellsearch').keyup(function () {
@@ -10067,6 +10035,39 @@ $(document).ready(function () {
                 }, 800);
             }
         });
+    }
+
+    if ($('#home-header').attr('id') != undefined) {
+        if (isMobile) {
+            $('#register-button').hide();
+            $('.page-header').css({
+                "height": "320px"
+            });
+            $('#home-header').css({
+                "flex-direction": "column"
+            });
+            $('#home-header img').css({
+                "display": "none"
+            });
+            $('.three.statistics').css({
+                "justify-content": "center"
+            });
+        }
+    }
+
+    // Mobile modifications
+    if ($('#search-header').attr('id') != undefined) {
+        if (isMobile) {
+            $('.navo-1').remove();
+            $('.navo-2').remove();
+            $('.fluid-results').css({
+                "display": "block"
+            });
+            $('.page-header').css({
+                "height": "140px",
+                "min-height": "140px"
+            });
+        }
     }
 });
 

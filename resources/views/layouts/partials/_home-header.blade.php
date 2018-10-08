@@ -7,13 +7,27 @@
     <div class="ui container" style="display: flex; flex-grow: 1; height: 80%; justify-content: center; flex-direction: column;">
         <div id="home-header" style="display: flex; justify-content: space-around; align-items: center;">
             <h1 class="ui jumbotron inline header" >
-                <img src="{{ asset('images/punit.svg') }}">
-                <div class="content">
-                    Oil & gas well locator made <u>simple</u>.
-                    <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $1.99 / month</div>
-                </div>
+                @guest
+                    <img src="{{ asset('images/punit.svg') }}">
+                    <div class="content">
+                        Oil & gas well locator made <u>simple</u>.
+                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $1.99 / month</div>
+                    </div>
+                    <button class="ui yellow inline large button">Sign me up!<i class="right arrow icon"></i></button>
+                @else
+
+                    @notsubscribed
+                        <img src="{{ request()->is('subscription') ? asset('images/subscription.svg') : asset('images/package.svg') }}">
+                        <div class="content">
+                            {{ request()->is('subscription') ? "Time to checkout" : "Your one step closer. Select a plan below." }}
+                            <div class="sub header" style="color:#f6e7ff !important;">
+                                {{ request()->is('subscription') ? "Verify your selected plan and add a coupon if you have one." : "Or have someone with a team plan can add you." }}
+                            </div>
+                        </div>
+                    @endsubscribed
+                @endguest
             </h1>
-            <button class="ui yellow inline large button">Sign me up!<i class="right arrow icon"></i></button>
+
         </div>
     </div>
 

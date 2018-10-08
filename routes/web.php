@@ -1,9 +1,16 @@
 <?php
 
-//Route::get('/token', function () {
-//    $token = auth()->user()->generateConfirmationToken();
-////    dd($token);
-//});
+use Illuminate\Http\Request;
+
+Route::get('user/invoice/{invoice}', function (Request $request, $invoiceId) {
+    return $request->user()->downloadInvoice($invoiceId, [
+        'vendor'  => 'Navo - oil well locator',
+        'product' => auth()->user()->plan()->name ." - ".
+            auth()->user()->plan()->price ." (".
+            auth()->user()->plan()->recurring .")"
+    ]);
+});
+
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
@@ -63,12 +70,14 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'],
             Route::post('/cancel', 'SubscriptionCancelController@store')->name('subscription.cancel.store');
             Route::get('/plan', 'SubscriptionPlanController@index')->name('subscription.plan.index');
             Route::post('/plan', 'SubscriptionPlanController@store')->name('subscription.plan.store');
+            Route::post('/plan/increase', 'SubscriptionPlanController@increase')->name('subscription.plan.increase');
         });
 
         /**
          * Update Card
          */
         Route::group(['middleware' => 'subscription.customer'], function () {
+            Route::get('/invoice', 'SubscriptionInvoiceController@index')->name('subscription.invoice.index');
             Route::get('/card', 'SubscriptionCardController@index')->name('subscription.card.index');
             Route::post('/card', 'SubscriptionCardController@store')->name('subscription.card.store');
         });
@@ -104,4 +113,5 @@ Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active']], 
     Route::post('/location/favorite/{well_location}', 'Location\FavoriteController@store')->name('location.favorite.store');
     Route::get('/search', 'NavoController@search')->name('search');
     Route::get('/{id}', 'NavoController@detail')->name('detail');
+    Route::get('/{id}/city/{city}', 'NavoController@locationCityStore')->name('location.city.store');
 });

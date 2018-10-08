@@ -4,15 +4,12 @@
             @include("layouts.partials._navigation")
         </div>
         <h2 class="navo-1">Search by <span style="font-weight: normal">well name, operator, etc. automatically. Just start typing</span></h2>
-        <h1 class="navo-2">navo</h1>
+        <h2 class="navo-2" style="font-weight: normal">Search: </h2>
         <div class="ui left icon action input" id="search-input">
             <ais-input type="text" placeholder="Search..." id="wellsearch"></ais-input>
             <i class="search icon"></i>
             <ais-clear class="ui icon yellow button" style="border: 1px solid rgba(34, 36, 38, 0.15)">
-
                 <i class="close icon"></i>
-
-
             </ais-clear>
         </div>
     </div>

@@ -30,6 +30,6 @@ class SubscriptionTeamMemberController extends Controller
     }
 
     protected function teamLimitReached($request) {
-        return $request->user()->team->users->count() === $request->user()->plan->teams_limit;
+        return $request->user()->team->users->count() === $request->user()->subscription('main')->quantity;
     }
 }
