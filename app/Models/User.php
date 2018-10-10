@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'activated',
+        'name', 'email', 'password', 'activated', 'phone'
     ];
 
     /**
@@ -47,6 +47,10 @@ class User extends Authenticatable
 
     public function favorites() {
         return $this->belongsToMany(WellLocation::class,"user_location_favorite", "user_id", "location_id")->withTimestamps();
+    }
+
+    public function history() {
+        return $this->belongsToMany(WellLocation::class,"user_location_history", "user_id", "location_id")->withTimestamps();
     }
 
     public function isLocationFavorite($id) {

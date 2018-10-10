@@ -15,6 +15,17 @@ class WellLocation extends Model
         return $this->belongsToMany(User::class, "user_location_favorite", "location_id", 'user_id')->withTimestamps();
     }
 
+    public function hasHistory() {
+        return $this->belongsToMany(User::class, "user_location_history", "location_id", 'user_id')->withTimestamps();
+    }
+
+    public function isUsersHistory($user_id) {
+        return DB::table('user_location_history')
+            ->where('user_id', "=", $user_id)
+            ->where("location_id", "=", $this->id)
+            ->exists();
+    }
+
     public function isFavoredByUser($user_id) {
        return DB::table('user_location_favorite')
            ->where('user_id', "=", $user_id)

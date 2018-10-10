@@ -5,20 +5,20 @@
             Navo
         </a>
     @else
-        <a class="item" href="{{ route('search') }}">
+        <a class="item {{ request()->is('search') ? 'active' : '' }}" href="{{ route('search') }}">
             <i class="search icon"></i>
             Search
         </a>
-        @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet())
-            <a class="item" href="{{ route('search') }}">
+
+            <a class="item @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) @else icon @endif {{ request()->is('*/favorite') ? 'active' : '' }}" href="{{ route("location.favorite.index") }}">
                 <i class="star outline icon"></i>
-                Favorites
+                @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) Favorites @endif
             </a>
-            <a class="item" href="{{ route('search') }}">
+            <a class="item @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) @else icon @endif {{ request()->is('*/history') ? 'active' : '' }}" href="{{ route("location.history.index") }}">
                 <i class="history icon"></i>
-                History
+                @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) History @endif
             </a>
-        @endif
+
     @endguest
 
     <div class="right menu">
@@ -45,8 +45,8 @@
                     <div class="menu" style="flex-direction: column">
                         <a class="item" href="{{ url("account") }}"><i class="user circle blue icon"></i> Account</a>
                         @if (!(new Jenssegers\Agent\Agent)->isDesktop() && !(new Jenssegers\Agent\Agent)->isTablet())
-                            <a class="item" href="{{ url("account") }}"><i class="star circle yellow icon"></i> Favorites</a>
-                            <a class="item" href="{{ url("account") }}"><i class="history violet icon"></i> History</a>
+                            <a class="item" href="{{ route("location.favorite.index") }}"><i class="star circle yellow icon"></i> Favorites</a>
+                            <a class="item" href="{{ route("location.history.index") }}"><i class="history violet icon"></i> History</a>
                         @endif
                         @teamsubscription
                         <a class="item" href="{{ route("account.subscription.team.index") }}"><i class="users green icon"></i> Manage Team</a>

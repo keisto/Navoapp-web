@@ -9,6 +9,17 @@ class AccountController extends Controller
 {
     public function index() {
         $user = auth()->user();
-        return view('account.index', compact('user'));
+        $teams = array();
+        foreach ($user->teams as $team) {
+            if (optional($team->owner)->hasSubscription()) {
+                $ar = array();
+                $ar["name"] = $team->name;
+                $ar["owner"] = $team->owner->name;
+                $ar["email"] = $team->owner->email;
+                array_push($teams, (object) $ar);
+            }
+        }
+
+        return view('account.index', compact('user', 'teams'));
     }
 }

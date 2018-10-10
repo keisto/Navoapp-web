@@ -110,8 +110,11 @@ Route::group(['prefix' => 'subscription', 'as' => 'subscription.',
  */
 Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active']], function () {
     Route::get('/search', 'NavoController@search')->name('search');
+    Route::get('/location/favorite', 'Location\FavoriteController@index')->name('location.favorite.index');
     Route::post('/location/favorite/{well_location}', 'Location\FavoriteController@store')->name('location.favorite.store');
+    Route::get('/location/history', 'Location\HistoryController@index')->name('location.history.index');
+    Route::post('/location/history/{well_location}', 'Location\HistoryController@store')->name('location.history.store');
     Route::get('/search', 'NavoController@search')->name('search');
     Route::get('/{id}', 'NavoController@detail')->name('detail');
-    Route::get('/{id}/city/{city}', 'NavoController@locationCityStore')->name('location.city.store');
+//    Route::get('/{id}/city/{city}', 'NavoController@locationCityStore')->name('location.city.store');
 });

@@ -15,15 +15,20 @@
                     </div>
                     <button class="ui yellow inline large button">Sign me up!<i class="right arrow icon"></i></button>
                 @else
-
                     @notsubscribed
                         <img src="{{ request()->is('subscription') ? asset('images/subscription.svg') : asset('images/package.svg') }}">
                         <div class="content">
-                            {{ request()->is('subscription') ? "Time to checkout" : "Your one step closer. Select a plan below." }}
+                            {{ request()->is('subscription') ? "Time to checkout" : "Your one step closer." }}
+                            @if (request()->is('plans'))
+                                Select a plan below.
+                            @endif
                             <div class="sub header" style="color:#f6e7ff !important;">
                                 {{ request()->is('subscription') ? "Verify your selected plan and add a coupon if you have one." : "Or have someone with a team plan can add you." }}
                             </div>
                         </div>
+                        @if (request()->is('/'))
+                            <a href='/plans' class='ui yellow inline button'>Select a Plan<i class='right arrow icon'></i></a>
+                        @endif
                     @endsubscribed
                 @endguest
             </h1>

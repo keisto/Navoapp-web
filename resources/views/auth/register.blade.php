@@ -21,10 +21,17 @@
                             @endif
 
                             <div class="field">
-                                <div class="ui left icon input{{ $errors->has('password') ? ' error' : '' }}">
+                                <div class="ui left icon action input {{ $errors->has('password') ? 'error' : '' }}">
                                     <i class="grey lock icon"></i>
                                     <input id="password" type="password" name="password" placeholder="Password">
+                                    <button class="ui icon basic button" onclick="myPassword()">
+                                        <i class="eye icon"></i>
+                                    </button>
                                 </div>
+                                {{--<div class="ui left icon input{{ $errors->has('password') ? ' error' : '' }}">--}}
+                                    {{--<i class="grey lock icon"></i>--}}
+                                    {{--<input id="password" type="password" name="password" placeholder="Password">--}}
+                                {{--</div>--}}
                             </div>
                             @if ($errors->has('password'))
                                 <div class="ui error message">
@@ -32,12 +39,12 @@
                                 </div>
                             @endif
 
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="grey lock icon"></i>
-                                    <input id="password-confirm" type="password" placeholder="Confirm Password" name="password_confirmation">
-                                </div>
-                            </div>
+                            {{--<div class="field">--}}
+                                {{--<div class="ui left icon input">--}}
+                                    {{--<i class="grey lock icon"></i>--}}
+                                    {{--<input id="password-confirm" type="password" placeholder="Confirm Password" name="password_confirmation">--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="field {{ $errors->has('terms') ? 'error' : '' }}">
                                 <div class="ui checkbox">
@@ -66,4 +73,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        function myPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection

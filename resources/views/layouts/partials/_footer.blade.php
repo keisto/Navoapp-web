@@ -2,7 +2,9 @@
      <div class="ui container grey-text" style="padding-bottom: 12px;">
          <div class="ui two column stackable grid" style="align-items: center">
              <div class="eight wide tablet only computer only column">
-                 Built with <span data-tooltip="The love of coding and coffee" data-inverted=""><i class="heart small red icon"></i> & <i class="coffee small brown icon"></i></span> in <a href="https://www.google.com/maps/place/Dickinson,+ND+58601/" target="_blank" style="color: rgba(0, 0, 0, 0.25)">Dickinson, ND</a>
+                 Built with <span data-tooltip="The love of coding and coffee" data-inverted=""><i class="heart small red icon"></i> &
+                     <i class="coffee small brown icon"></i></span> in
+                 <a href="https://www.google.com/maps/place/Dickinson,+ND+58601/" target="_blank" style="color: rgba(0, 0, 0, 0.25); text-decoration: underline">Dickinson, ND</a>
              </div>
              {{--<div class="eight wide tablet only computer only center aligned column">--}}
                  {{--<span style="margin: 0 5px" data-tooltip="Developed by Tony Keiser" data-inverted="">--}}

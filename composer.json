@@ -11,12 +11,14 @@
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "guzzlehttp/guzzle": "^6.3",
+        "ixudra/curl": "^6.16",
         "jenssegers/agent": "^2.6",
         "laravel/cashier": "^7.2",
         "laravel/framework": "5.7.*",
         "laravel/scout": "^5.0",
         "laravel/tinker": "^1.0",
-        "stripe/stripe-php": "^5.9.2"
+        "stripe/stripe-php": "^5.9.2",
+        "stuyam/laravel-phone-validator": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

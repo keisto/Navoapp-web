@@ -12,7 +12,7 @@ class ProfileController extends Controller
     }
 
     public function store(ProfileStoreRequest $request) {
-        $request->user()->update($request->only(['name', 'email']));
+        $request->user()->update($request->only(['name', 'email', 'phone']));
         return back()->with('success', 'Profile details updated.');
     }
 }

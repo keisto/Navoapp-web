@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class FavoriteController extends Controller
 {
+    public function index() {
+        $favorites = auth()->user()->favorites()->orderByDesc('user_location_favorite.created_at')->get();
+        return view('location.favorite.index', compact('favorites'));
+    }
+
     public function store($location) {
         $location = WellLocation::find($location);
         if ($location) {
