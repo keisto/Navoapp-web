@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('layouts.partials._account-header')
+    @include('layouts.partials._sticky-header')
     <div class="ui padder container">
         <div class="ui grid">
             <div class="four wide column computer only tablet only">

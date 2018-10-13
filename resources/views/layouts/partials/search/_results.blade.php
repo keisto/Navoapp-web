@@ -1,7 +1,7 @@
 <div class="ui fluid container padder fluid-results" style="{{ $agent->isDesktop() ? "display:none;" : "padding-left:12px; padding-right:12px" }}">
     <ais-no-results style="text-align: center"></ais-no-results>
     <div style="display: flex">
-        @include("layouts.partials._filter")
+        @include("layouts.partials.search._filter")
         <div style="flex-grow: 1; {{ $agent->isDesktop() ? "margin-top:36px" : "margin-top:0" }}">
             <ais-results>
                 <template slot-scope="{ result }">

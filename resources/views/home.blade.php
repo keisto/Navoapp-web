@@ -165,11 +165,10 @@
                     <div class="header">And More!</div>
                     <div class="meta">Looking for more info?</div>
                     <div class="description">
-                        <a href="mailto:keisertony@gmail.com">Email any requests or suggestions!</a>
+                        <a href="mailto:tony@navoapp.io">Email any requests or suggestions!</a>
                     </div>
                 </div>
             </div>
         </div>
-        @include("layouts.partials._pricing")
     </div>
 @endsection

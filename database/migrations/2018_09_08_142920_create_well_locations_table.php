@@ -25,7 +25,7 @@ class CreateWellLocationsTable extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('county_name')->nullable();
-            $table->string('closet_city')->nullable();
+            $table->string('closest_city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->default('United States');
             $table->string('grid1')->nullable();

@@ -3,7 +3,7 @@
     {{--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>--}}
     <script>
         $( document ).ready(function() {
-            $("form").submit(function(e){
+            $("#favorite-form").submit(function(e){
                 e.preventDefault(e);
                 axios.post("/location/favorite/{{$location->id}}").then(response => {
                     if (response.data == "removed") {
@@ -20,6 +20,76 @@
                 }).catch(error => {
                     $('#favorite_button').attr('data-tooltip', 'Failed to Add.');
                 });
+            });
+
+            var $originalUserNotes;
+            resetNote();
+
+            $("#note-form").submit(function(e){
+                e.preventDefault(e);
+                axios.post("/location/note/{{$location->id}}", { text : $('#note_text').val() }).then(response => {
+                    if (response.data == "updated") {
+                        setTimeout(function () {
+                            $('#note_button').addClass('disabled');
+                        }, 2500);
+                        $('#note_button').attr('data-tooltip', 'Note Updated.');
+                        $('#note_updated').text('Updated: just now');
+                        resetNote();
+                    } else if (response.data == "saved") {
+                        setTimeout(function () {
+                            $('#note_button').addClass('disabled');
+                        }, 2500);
+                        $('#note_button').attr('data-tooltip', 'Note Saved!');
+                        $('#note_updated').text('Updated: Now');
+                        resetNote();
+                    } else if (response.data == "removed") {
+                        setTimeout(function () {
+                            $('#note_button').addClass('disabled');
+                        }, 2500);
+                        $('#note_updated').text('No Note Created');
+                        $('#note_button').attr('data-tooltip', 'Note Removed.');
+                        resetNote();
+                    } else if (response.data == "error") {
+                        $('#note_button').attr('data-tooltip', 'Failed. Try to refresh?');
+                    }
+                }).catch(error => {
+                    $('#note_button').attr('data-tooltip', 'Failed.');
+                });
+            });
+
+            $('#message-form').submit(function (e) {
+                e.preventDefault();
+                axios.post("/location/share/message", { message : $('#text-message').val() }).then(response => {
+                    console.log(response.data);
+                    if (response.data == "updated") {
+                        // setTimeout(function () {
+                        //     $('#note_button').addClass('disabled');
+                        // }, 2500);
+                        // $('#note_button').attr('data-tooltip', 'Note Updated.');
+                        // $('#note_updated').text('Updated: just now');
+                        // resetNote();
+                    } else {
+                        //$('#note_button').attr('data-tooltip', 'Failed. Try to refresh?');
+                    }
+                    // update time;
+                }).catch(error => {
+                    console.log(error);
+                    // $('#note_button').attr('data-tooltip', 'Failed.');
+                });
+            });
+
+            function resetNote() {
+                $originalUserNotes = $('#user_note').val();
+                $('#note_text').val($originalUserNotes);
+            }
+
+            $('#user_note').keyup(function () {
+                if ($originalUserNotes != $('#user_note').val()) {
+                    $('#note_text').val($('#user_note').val());
+                    $('#note_button').removeClass('disabled');
+                } else {
+                    $('#note_button').addClass('disabled');
+                }
             });
 
             $('.ui.modal').modal({ blurring: false });

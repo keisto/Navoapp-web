@@ -24,7 +24,7 @@
                                 <div class="ui left icon action input {{ $errors->has('password') ? 'error' : '' }}">
                                     <i class="grey lock icon"></i>
                                     <input id="password" type="password" name="password" placeholder="Password">
-                                    <button class="ui icon basic button" onclick="myPassword()">
+                                    <button type="button" class="ui icon basic button" onclick="myPassword()">
                                         <i class="eye icon"></i>
                                     </button>
                                 </div>
@@ -76,7 +76,7 @@
 @endsection
 @section('scripts')
     <script>
-        function myPassword() {
+        function myPassword(e) {
             var x = document.getElementById("password");
             if (x.type === "password") {
                 x.type = "text";

@@ -35,9 +35,10 @@
             <div class="field {{ $errors->has('team_size') ? 'error' : '' }}">
                 <div class="ui left icon right labeled input">
                     <i class="group icon"></i>
-                    <input type="number" name="team_size" id="units" placeholder="Number of users" min="10" step="1" value="{{ auth()->user()->subscription('main')->quantity }}">
+                    <input type="number" name="team_size" id="units" placeholder="Number of users" min="10" step="1"
+                           value="{{ auth()->user()->subscription('main')->quantity }}">
                     <div class="ui yellow label">
-                       @ $ 2.99 / User
+                       @ $ 6.99 / User
                     </div>
                 </div>
             </div>
@@ -50,7 +51,7 @@
             @endif
             <button type="submit" class="ui green submit button">Update Team Limit</button>
             <span>Your {{ auth()->user()->plan->recurring }} bill will be: $
-                <span id="current_pay" style="font-weight: bold">{{ number_format(auth()->user()->subscription('main')->quantity * 2.99, 2) }}</span>
+                <span id="current_pay" style="font-weight: bold">{{ number_format(auth()->user()->subscription('main')->quantity * 6.99, 2) }}</span>
                 <span data-tooltip="This is a base price. Read note below." data-inverted="">
                     <i class="icons">
                         <i class="info circle orange icon"></i>
@@ -63,13 +64,13 @@
                     <p><strong>Please Note:</strong> Accounts are prorated. Your next month bill maybe different than what is estimated above</p>
                 </div>
             </div>
-            <p><strong>Increasing Team:</strong> If you paid for 10 users $29.90 and want to increase it to 20 users in the middle of the month.
-                Your next month bill will be for 20 users @ $2.99 ($59.80) <u><strong>plus</strong> $14.95 </u> =
-                $74.75. The following month will be back at the price shown above.</p>
-            <p><strong>Decreasing Team:</strong> If you paid for 20 users $59.80 and want to decrease it to 10 users in the middle of the month.
-                Your next month bill will be for 10 users @ $2.99 ($29.90) <u><strong>minus</strong> $14.95 (credit)</u> =
-                $14.95. The following month will be back at the price shown above.</p>
-            <p><strong>Questions:</strong> <a href="mailto:keisertony@gmail.com">Email us</a> if you have any questions or need clarification.</p>
+            <p><strong>Increasing Team:</strong> If you paid for 10 users $29.90 and want to increase to 20 users in the middle of the month.
+                Your next month bill will be for 20 users @ $6.99 ($139.80) <u><strong>plus</strong> $34.95 </u> =
+                $174.75. The following month will be back at the price shown above.</p>
+            <p><strong>Decreasing Team:</strong> If you paid for 20 users ($139.80) and want to decrease to 10 users in the middle of the month.
+                Your next month bill will be for 10 users @ $6.99 ($69.90) <u><strong>minus</strong> $34.95 (credit)</u> =
+                $34.95. The following month will be back at the price shown above.</p>
+            <p><strong>Questions:</strong> <a href="mailto:tony@navoapp.io">Email us</a> if you have any questions or need clarification.</p>
         </form>
     </div>
     @endteamsubscription
@@ -94,10 +95,10 @@
                     // } else {
                     //     $('#current_pay').text((units * 2.99).toFixed(2));
                     // }
-                    $('#current_pay').text((units * 2.99).toFixed(2));
+                    $('#current_pay').text((units * 6.99).toFixed(2));
                 } else {
                     // $('#payment_due').text("0.00");
-                    $('#current_pay').text(({{ auth()->user()->subscription('main')->quantity * 2.99 }}).toFixed(2));
+                    $('#current_pay').text(({{ auth()->user()->subscription('main')->quantity * 6.99 }}).toFixed(2));
                 }
             }
         });

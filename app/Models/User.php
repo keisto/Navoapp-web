@@ -53,6 +53,10 @@ class User extends Authenticatable
         return $this->belongsToMany(WellLocation::class,"user_location_history", "user_id", "location_id")->withTimestamps();
     }
 
+    public function noteForLocation($location_id) {
+        return $this->hasOne(Note::class)->where('location_id', '=', $location_id);
+    }
+
     public function isLocationFavorite($id) {
         $location = WellLocation::find($id);
         if ($location) {

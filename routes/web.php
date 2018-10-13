@@ -109,12 +109,28 @@ Route::group(['prefix' => 'subscription', 'as' => 'subscription.',
  * Membership Areas
  */
 Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active']], function () {
-    Route::get('/search', 'NavoController@search')->name('search');
+    /**
+     * Favorite Locations
+     */
     Route::get('/location/favorite', 'Location\FavoriteController@index')->name('location.favorite.index');
     Route::post('/location/favorite/{well_location}', 'Location\FavoriteController@store')->name('location.favorite.store');
+    /**
+     * Location History
+     */
     Route::get('/location/history', 'Location\HistoryController@index')->name('location.history.index');
     Route::post('/location/history/{well_location}', 'Location\HistoryController@store')->name('location.history.store');
+//    Route::get('/search', 'NavoController@search')->name('search');
+    /**
+     * Location Search & Details
+     */
     Route::get('/search', 'NavoController@search')->name('search');
     Route::get('/{id}', 'NavoController@detail')->name('detail');
-//    Route::get('/{id}/city/{city}', 'NavoController@locationCityStore')->name('location.city.store');
+    /**
+     * Location Notes
+     */
+    Route::post('/location/note/{id}', 'Location\NoteController@store')->name('location.note.store');
+    /**
+     * Share - Text Message
+     */
+    Route::post('/location/share/message', 'Location\MessageController@store')->name('location.share.message.store');
 });

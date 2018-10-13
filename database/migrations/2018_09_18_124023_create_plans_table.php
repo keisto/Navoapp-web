@@ -16,7 +16,6 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description');
             $table->string('recurring');
             $table->string('slug')->unique();
             $table->string('gateway_id');
