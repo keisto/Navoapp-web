@@ -8,5 +8,5 @@ We are just letting you know your password was recently updated.
 {{--@endcomponent--}}
 
 Thanks,<br>
-{{ config('app.name') }}
+Tony
 @endcomponent

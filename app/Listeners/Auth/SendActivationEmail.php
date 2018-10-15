@@ -3,7 +3,6 @@
 namespace App\Listeners\Auth;
 
 use App\Mail\Auth\ActivationEmail;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 

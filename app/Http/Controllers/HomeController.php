@@ -23,20 +23,10 @@ class HomeController extends Controller
     }
 
     public function test() {
-//        $location = WellLocation::find(90941);
-//        ->attach(auth()->user());
-//        auth()->user()->favorites()->attach($location);
 
-//        dd(auth()->user()->favorites()->get());
 
-//        dd($location->hasFavored()->get()->count());
-        dd(auth()->user()->isFavorite(90941));
+        dd(auth()->user()->teamMembers());
         return view('test');
     }
 
-//    public function index.blade.php() {
-//        $day = \Carbon\Carbon::now()->format('Y-m-d');
-//        $dispatches = Dispatch::dispatch()->with('items')->day($day)->group()->get();
-//        return view('dispatch.index.blade.php', compact('dispatches', 'day'));
-////    }
 }

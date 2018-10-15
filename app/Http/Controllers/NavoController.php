@@ -45,7 +45,7 @@ class NavoController extends Controller
                 auth()->user()->history()->attach($location->id);
             }
 
-            if (!auth()->user()->hasOneCall()) {
+            if (auth()->user()->hasOneCall()) {
                 $intersection = OneCallController::getIntersection($location);
                 if ($intersection == null) {
                     $nearbyStreets = OneCallController::getNearbyStreets($location);
@@ -62,7 +62,10 @@ class NavoController extends Controller
                 $notes = $location->noteByUser()->get();
             }
 
-            return view('detail', compact('location', 'onecaller', 'intersection', 'nearbyStreets', 'directions', 'notes'));
+            $teamMembers = auth()->user()->teamMemberNumbers();
+
+            return view('detail', compact('location', 'onecaller',
+                'intersection', 'nearbyStreets', 'directions', 'notes', 'teamMembers'));
         } else {
             return redirect()->route('search')->with('error', 'Sorry, we couldn\'t find the location you were looking for.');
         }

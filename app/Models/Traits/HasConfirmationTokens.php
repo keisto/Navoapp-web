@@ -16,7 +16,7 @@ trait HasConfirmationTokens {
     }
 
     protected  function  getConfirmationTokenExpiry() {
-        return $this->freshTimestamp()->addHours(72);
+        return $this->freshTimestamp()->addDays(30);
     }
 
     public function confirmationToken() {

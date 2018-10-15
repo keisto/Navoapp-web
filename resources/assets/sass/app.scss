@@ -4,6 +4,13 @@ body {
   min-height: 100vh;
 }
 
+#simple-search {
+  background-image: url("/images/oilpatch.png");
+  background-position: bottom 20px right 20px;
+  background-repeat: no-repeat;
+  margin-bottom: 44px;
+}
+
 .ui.form .success.message,
 .ui.form .warning.message,
 .ui.form .error.message {

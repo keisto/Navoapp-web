@@ -26,10 +26,10 @@ class SubscriptionTeamMemberStoreRequest extends FormRequest
     {
         return [
             'email' => [
-                'required',
-                Rule::exists('users', 'email')->where(function ($builder) {
-                    $builder->where('email', '!=', $this->user()->email)->orWhere('deleted_at', '==', 'NULL');
-                })
+                'required', 'email', 'not_in:'.auth()->user()->email
+//                Rule::unique('users', 'email')->where(function ($builder) {
+//                    $builder->where('email', '!=', $this->user()->email)->orWhere('deleted_at', '==', 'NULL');
+//                })
             ]
         ];
     }

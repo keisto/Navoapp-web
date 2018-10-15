@@ -82,4 +82,80 @@ class User extends Authenticatable
     public function teams() {
         return $this->belongsToMany(Team::class);
     }
+
+    public function teamMembers () {
+        $teamMembers = array();
+        $teams = $this->teams()->get();
+        if (auth()->user()->hasPiggybackSubscription() && count($teams)) {
+            foreach ($teams as $team) {
+                foreach ($team->users()->get() as $user) {
+                    if (!in_array($user, $teamMembers)) {
+                        array_push($teamMembers, $user);
+                    }
+                }
+                if (!in_array($team->owner()->get()->first(), $teamMembers)) {
+                    array_push($teamMembers, $team->owner()->get()->first());
+                }
+            }
+            return (object) $teamMembers;
+        } else if (auth()->user()->hasTeamSubscription()) {
+            $team = auth()->user()->team()->get()->first();
+            foreach ($team->users()->get() as $user) {
+                if (!in_array($user, $teamMembers)) {
+                    array_push($teamMembers, $user);
+                }
+
+            }
+            // add self as team owner
+            array_push($teamMembers, auth()->user());
+            return (object) $teamMembers;
+        } else {
+            return null;
+        }
+    }
+
+    public function teamMemberNumbers() {
+        // Get team members with phone numbers ONLY
+        $teamMembers = array();
+        $teams = $this->teams()->get();
+        if (auth()->user()->hasPiggybackSubscription() && count($teams)) {
+            foreach ($teams as $team) {
+                foreach ($team->users()->get() as $user) {
+                    if ($user->phone != null) {
+                        if (!in_array($user, $teamMembers)) {
+                            array_push($teamMembers, $user);
+                        }
+                    }
+                }
+                if (!in_array($team->owner()->get()->first(), $teamMembers)) {
+                    if ($team->owner()->get()->first()->phone != null) {
+                        array_push($teamMembers, $team->owner()->get()->first());
+                    }
+                }
+            }
+            return (object) $teamMembers;
+        } else if (auth()->user()->hasTeamSubscription()) {
+            $team = auth()->user()->team()->get()->first();
+            foreach ($team->users()->get() as $user) {
+                if (!in_array($user, $teamMembers)) {
+                    if ($user->phone != null) {
+                        array_push($teamMembers, $user);
+                    }
+                }
+
+            }
+            // add self as team owner
+            if (auth()->user()->phone != null) {
+                array_push($teamMembers, auth()->user());
+            }
+            return (object) $teamMembers;
+        } else {
+            return null;
+        }
+    }
+
+    public function getPhoneNumberAttribute() {
+        $phone = $this->phone;
+        return "(". substr($phone,0,3) .") " . substr($phone,3,3) . "-" .  substr($phone,6,4);
+    }
 }

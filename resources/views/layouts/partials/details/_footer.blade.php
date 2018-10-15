@@ -20,7 +20,7 @@
                 </button>
             </form>
 
-            <a class="ui blue button" onclick="$('.ui.modal').modal('show');">
+            <a class="ui blue button" onclick="$('#share_modal').modal('show');">
                 <i class="icon share"></i>
                 Share
             </a>

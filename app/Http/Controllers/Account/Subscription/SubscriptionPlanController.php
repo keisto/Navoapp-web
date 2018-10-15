@@ -28,7 +28,7 @@ class SubscriptionPlanController extends Controller
 //            ->incrementQuantity(5);
         }
 
-        $user->subscription('main')->swap($plan->gateway_id);
+        $user->subscription('main')->skipTrial()->swap($plan->gateway_id);
 
         return back()->with('success', 'Your subscription was updated successfully.');
     }

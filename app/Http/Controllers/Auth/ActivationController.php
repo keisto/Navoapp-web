@@ -28,4 +28,16 @@ class ActivationController extends Controller
     protected function redirectedPath() {
         return $this->redirectTo;
     }
+
+    public function teamActivate(ConfirmationToken $token, Request $request)
+    {
+        $token->user->update([
+            'activated' => true
+        ]);
+
+        Auth::loginUsingId($token->user->id);
+
+        return redirect()->route('account.password.index')->with('warning', 'You should update your password with something you can easily remember.');
+    }
+
 }

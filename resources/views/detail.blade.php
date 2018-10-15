@@ -113,5 +113,6 @@
         </div>
         @include('layouts.partials.details._footer')
     @include('layouts.partials.details._modal')
+    @include('layouts.partials.details._progress')
 @endsection
 @include('layouts.partials.details._scripts')

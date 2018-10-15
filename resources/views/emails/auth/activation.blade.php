@@ -1,10 +1,12 @@
 @component('mail::message')
-Please activate your account
+Hello and welcome to Navo! <br><br>
+Please activate your account:
 
 @component('mail::button', ['url' => route('activation.activate', $token)])
-Activate
+Activate Your Account
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+Thank you,<br>
+Tony<br>
+tony@navoapp.io
 @endcomponent

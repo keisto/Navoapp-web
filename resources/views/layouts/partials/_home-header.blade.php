@@ -11,7 +11,7 @@
                     <img src="{{ asset('images/punit.svg') }}">
                     <div class="content">
                         Oil & gas well locator made <u>simple</u>.
-                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $1.99 / month</div>
+                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $3.99 / month</div>
                     </div>
                     <button class="ui yellow inline large button">Sign me up!<i class="right arrow icon"></i></button>
                 @else

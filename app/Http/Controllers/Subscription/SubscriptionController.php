@@ -17,7 +17,6 @@ class SubscriptionController extends Controller
 
     public function store(SubscriptionStoreRequest $request) {
 
-//        $subscription = $request->user()->newSubscription('main', $request->plan)->trialDays(3);
         $subscription = $request->user()->newSubscription('main', $request->plan);
 
         if ($request->has('coupon')) {
@@ -27,6 +26,8 @@ class SubscriptionController extends Controller
         $plan = Plan::where('gateway_id', '=', $request->plan)->limit(1)->get()->first();
         if ($plan->teams_enabled) {
             $subscription->quantity($plan->teams_limit);
+        } else {
+            $subscription->trialDays(3);
         }
 
         $subscription->create($request->token);

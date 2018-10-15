@@ -19,6 +19,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\Auth\UserRequestedActivationEmail' => [
             'App\Listeners\Auth\SendActivationEmail',
+        ],
+        'App\Events\Auth\UserRequestedByTeamOwner' => [
+            'App\Listeners\Auth\SendTeamActivationEmail',
+            'App\Listeners\Auth\CreateDefaultTeam',
         ]
     ];
 

@@ -49,8 +49,11 @@
                             <a class="item" href="{{ route("location.history.index") }}"><i class="history violet icon"></i> History</a>
                         @endif
                         @teamsubscription
-                        <a class="item" href="{{ route("account.subscription.team.index") }}"><i class="users green icon"></i> Manage Team</a>
+                            <a class="item" href="{{ route("account.subscription.team.index") }}"><i class="users green icon"></i> Manage Team</a>
                         @endteamsubscription
+                        @piggybacksubscription
+                            <a class="item" href="{{ route("team.members.index") }}"><i class="users green icon"></i> View Team</a>
+                        @endpiggybacksubscription
                         {{--<div class="item"><i class="cogs teal icon"></i> Settings</div>--}}
                         <div class="divider"></div>
                         <a class="item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -11,6 +11,10 @@ Route::get('user/invoice/{invoice}', function (Request $request, $invoiceId) {
     ]);
 });
 
+Route::get('/mailable', function () {
+    return new App\Mail\Auth\TeamActivationEmail("s", "afds");
+});
+
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/test', 'HomeController@test')->name('test');
@@ -33,6 +37,7 @@ Route::group(['prefix' => 'activation', 'middleware' => ['guest'], 'as' => 'acti
     Route::get('/resend','Auth\ActivationResendController@index')->name('resend');
     Route::post('/resend','Auth\ActivationResendController@store')->name('resend.store');
     Route::get('/{confirmation_token}','Auth\ActivationController@activate')->name('activate');
+    Route::get('/{confirmation_token}/team','Auth\ActivationController@teamActivate')->name('activate.team');
 });
 
 /**
@@ -133,4 +138,8 @@ Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active']], 
      * Share - Text Message
      */
     Route::post('/location/share/message', 'Location\MessageController@store')->name('location.share.message.store');
+    /**
+     * Team Members
+     */
+    Route::get('/team/members', 'Team\TeamController@index')->name('team.members.index');
 });

@@ -35,7 +35,7 @@
                     <label>Phone Number</label>
                     <div class="ui labeled input">
                         <div class="ui label">+1</div>
-                        <input id="phone" type="text" placeholder="10 Digit - Phone Number"
+                        <input id="phone" type="text" placeholder="10 Digit - Phone Number (Ex: 1234567890)"
                                name="phone" value="{{ old('phone', auth()->user()->phone) }}">
                     </div>
                 </div>

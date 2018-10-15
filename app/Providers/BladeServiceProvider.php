@@ -40,6 +40,9 @@ class BladeServiceProvider extends ServiceProvider
         Blade::if('notpiggybacksubscription', function() {
             return !auth()->user()->hasPiggybacksubscription();
         });
+        Blade::if('piggybacksubscription', function() {
+            return auth()->user()->hasPiggybacksubscription();
+        });
 
     }
 

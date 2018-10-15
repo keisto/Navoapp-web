@@ -69,16 +69,17 @@ class WellLocation extends Model
                             }
                         }
                     }
-                }
-            }
-            if ($team->owner()->get()->first()->noteForLocation($this->id) != null) {
-                $object = $team->owner()->get()->first()->noteForLocation($this->id)->get()->first();
-                if ($object != null) {
-                    if (!in_array($object, $teamMemberNotes)) {
-                        array_push($teamMemberNotes, $object);
+                    if ($team->owner()->get()->first()->noteForLocation($this->id) != null) {
+                        $object = $team->owner()->get()->first()->noteForLocation($this->id)->get()->first();
+                        if ($object != null) {
+                            if (!in_array($object, $teamMemberNotes)) {
+                                array_push($teamMemberNotes, $object);
+                            }
+                        }
                     }
                 }
             }
+
         }
 
 

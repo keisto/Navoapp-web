@@ -14,7 +14,7 @@
                     <p><span style="color: #838383;">Name:</span> {{ $user->name  }}</p>
                     <p><span style="color: #838383;">Email:</span> {{ $user->email  }}</p>
                     @if ($user->phone)
-                        <p><span style="color: #838383;">Phone:</span> {{ $user->phone  }}</p>
+                        <p><span style="color: #838383;">Phone:</span> {{ $user->phone_number  }}</p>
                     @else
                         @if ($user->hasPiggybackSubscription() && count($teams))
                                 <p><span style="color: #838383;">Add a phone number for your team members sake.<a href="{{ route('account.profile.index') }}"><i class="plus square green icon"></i></a></span></p>

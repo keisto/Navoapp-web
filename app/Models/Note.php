@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Note extends Model
 {
     public function user() {
-        return $this->belongsTo(User::class)->get()->first();
+        return $this->belongsTo(User::class)->withTrashed()->get()->first();
     }
 
     public function location() {
