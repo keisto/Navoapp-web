@@ -20,8 +20,8 @@
 </head>
 <body>
 
- @yield('content')
-
+@yield('content')
+@include('layouts.partials._legal')
 <!-- Scripts -->
 <script src="{{ asset('/js/app.js') }}"></script>
 <script src="{{ asset('/dist/semantic.js') }}"></script>

@@ -11,7 +11,7 @@
             </svg>
         </div>
     </div>
-    <div class="ui container" style="margin-top: -44px; margin-bottom: 44px;">
+    <div class="ui container" style="margin-top: 12px; margin-bottom: 44px;">
         @else
             <div class="page-header">
                 <div class="ui center aligned container">

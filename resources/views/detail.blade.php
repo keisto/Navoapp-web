@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @include('layouts.partials.details._header')
-        <div class="ui floating padded segment">
+        <div class="ui secondary menu">
+            <a class="item active" data-tab="detail"><i class="map marker alternate icon"></i> Location</a>
+            <a class="item" data-tab="nearby"><i class="compass outline icon"></i> Nearby <span class="ui label">#</span></a>
+        </div>
+        <div class="ui raised padded segment">
             <div class="ui equal width stackable grid">
                 @include('layouts.partials.details._details')
                 <div class="row">

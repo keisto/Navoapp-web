@@ -39,18 +39,13 @@
                                 </div>
                             @endif
 
-                            {{--<div class="field">--}}
-                                {{--<div class="ui left icon input">--}}
-                                    {{--<i class="grey lock icon"></i>--}}
-                                    {{--<input id="password-confirm" type="password" placeholder="Confirm Password" name="password_confirmation">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
                             <div class="field {{ $errors->has('terms') ? 'error' : '' }}">
-                                <div class="ui checkbox">
+                                <div class="ui checkbox" style="display: inline-block">
                                     <input type="checkbox" name="terms">
-                                    <label>I accept the <a>terms of services</a></label>
+                                    <label style="display: inline-block">I agree</label> to the
                                 </div>
+                                <span onclick="$('#modal_privacy').modal('show');" style="color: #0d71bb">privacy policy</span>
+                                and <span onclick="$('#modal_terms').modal('show');" style="color: #0d71bb;">terms</span>.
                             </div>
 
                             @if ($errors->has('terms'))
@@ -61,9 +56,6 @@
 
                             <button type="submit" class="ui fluid large blue submit button">Register</button>
                         </div>
-
-
-
                     </form>
 
                     <div class="ui black inverted message" style="margin-bottom: 20px">
