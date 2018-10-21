@@ -18,7 +18,7 @@ class CreateLocationNoteTable extends Migration
             $table->integer('location_id')->unsigned()->index();
             $table->integer('note_id')->unsigned()->index();
             $table->timestamps();
-            $table->foreign('location_id')->references('id')->on('well_locations');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->foreign('note_id')->references('id')->on('notes');
         });
     }

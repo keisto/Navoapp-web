@@ -19,7 +19,7 @@ class CreateUserLocationHistoryTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('location_id')->references('id')->on('well_locations');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->foreign('user_id')->references('id')->on('users');
         });
 

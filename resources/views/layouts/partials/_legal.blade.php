@@ -34,14 +34,12 @@
     </div>
 </div>
 
-@section('scripts')
-    <script>
-        $('#show_terms').click(function () {
-            $('#modal_terms').modal('show');
-        });
+<script>
+    $('#show_terms').click(function () {
+        $('#modal_terms').modal('show');
+    });
 
-        $('#show_privacy').click(function () {
-            $('#modal_privacy').modal('show');
-        });
-    </script>
-@endsection
+    $('#show_privacy').click(function () {
+        $('#modal_privacy').modal('show');
+    });
+</script>

@@ -113,7 +113,8 @@ Route::group(['prefix' => 'subscription', 'as' => 'subscription.',
 /**
  * Membership Areas
  */
-Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active']], function () {
+Route::group(['prefix' => '', 'middleware' => ['auth', 'subscription.active', 'legal.terms']], function () {
+
     /**
      * Favorite Locations
      */

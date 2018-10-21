@@ -264,6 +264,18 @@
                 map: map,
                 title: '{{ $location->well_name }}',
             });
+
+            let nearbyLocations = {!! $nearby !!};
+            for (let i = 0; i < nearbyLocations.length ; i++) {
+                // console.log(nearbyLocations[i]['well_name']);
+                let latitude = Number(nearbyLocations[i]['latitude']);
+                let longitude = Number(nearbyLocations[i]['longitude']);
+                let marker = new google.maps.Marker({
+                    position: {lat: latitude, lng: longitude},
+                    map: map,
+                    title: nearbyLocations[i]['well_name'],
+                });
+            }
         }
 
     </script>

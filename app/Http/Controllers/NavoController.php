@@ -5,19 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Location\OneCallController;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
-use App\Models\WellLocation;
+use App\Models\Location;
 use App\Models\Note;
 use Illuminate\Support\Facades\DB;
 
 class NavoController extends Controller
 {
-    protected $dates = array('date_modified');
 
     public function search() {
-        $locations = WellLocation::all();
-        $operators = $states = DB::table('well_locations')->distinct('current_operator')->count('current_operator');
-        $states = DB::table('well_locations')->distinct('state')->count('state');
-        $wells = WellLocation::count();
+        $locations = Location::all();
+        $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
+        $states = DB::table('locations')->distinct('state')->count('state');
+        $wells = Location::count();
         $agent = new Agent();
         if(auth()->user()->doesNotHaveSubscription()) {
             return redirect('plans.index')->with('error', 'Sorry, you\'ll need a plan to start searching.');
@@ -26,7 +25,7 @@ class NavoController extends Controller
     }
 
     public function detail($location) {
-        $location = WellLocation::find($location);
+        $location = Location::find($location);
         $onecaller = !auth()->user()->hasOneCall() ? "1" : "0";
         $nearbyStreets = null;
         $intersection = null;
@@ -64,8 +63,12 @@ class NavoController extends Controller
 
             $teamMembers = auth()->user()->teamMemberNumbers();
 
+            $nearby = $location->nearby();
+
+//            dd($nearby);
+
             return view('detail', compact('location', 'onecaller',
-                'intersection', 'nearbyStreets', 'directions', 'notes', 'teamMembers'));
+                'intersection', 'nearbyStreets', 'directions', 'notes', 'teamMembers', 'nearby'));
         } else {
             return redirect()->route('search')->with('error', 'Sorry, we couldn\'t find the location you were looking for.');
         }

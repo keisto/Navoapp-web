@@ -7,10 +7,25 @@ use Laravel\Scout\Searchable;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class WellLocation extends Model
+class Location extends Model
 {
     use Searchable;
 
+    public function toSearchableArray()
+    {
+        $record = $this->toArray();
+
+        $record['_geoloc'] = [
+            'lat' => $record['latitude'],
+            'lng' => $record['longitude'],
+        ];
+        // Remove unnecessary data
+        unset($record['section'], $record['range'], $record['township'], $record['country']);
+        unset($record['created_at'], $record['updated_at']);
+        unset($record['latitude'], $record['longitude']);
+
+        return $record;
+    }
     public function notes() {
         return $this->belongsToMany(Note::class, "location_note", "location_id", 'note_id')
             ->orderByDesc('notes.updated_at')
@@ -19,15 +34,6 @@ class WellLocation extends Model
 
     public function noteByUser() {
         return $this->hasOne(Note::class, "location_id")->where('user_id', '=', auth()->id());
-//        $notes = $this->belongsToMany(Note::class, "location_note", "location_id", 'note_id')
-//            ->withTimestamps()->get();
-//
-//        foreach ($notes as $note) {
-//            if ($note->user_id == auth()->id() && $note->location_id == $this->id) {
-//                return $note->get();
-//            }
-//        }
-//        return null;
     }
 
     public function notesByTeamMembers()
@@ -81,20 +87,17 @@ class WellLocation extends Model
             }
 
         }
-
-
-
         return collect($teamMemberNotes);
     }
 
     public function hasFavored() {
         return $this->belongsToMany(User::class, "user_location_favorite", "location_id", 'user_id')
-                    ->withTimestamps();
+            ->withTimestamps();
     }
 
     public function hasHistory() {
         return $this->belongsToMany(User::class, "user_location_history", "location_id", 'user_id')
-                    ->withTimestamps();
+            ->withTimestamps();
     }
 
     public function isUsersHistory($user_id) {
@@ -105,10 +108,10 @@ class WellLocation extends Model
     }
 
     public function isFavoredByUser($user_id) {
-       return DB::table('user_location_favorite')
-           ->where('user_id', "=", $user_id)
-           ->where("location_id", "=", $this->id)
-           ->exists();
+        return DB::table('user_location_favorite')
+            ->where('user_id', "=", $user_id)
+            ->where("location_id", "=", $this->id)
+            ->exists();
     }
 
     public function favoredOn($user_id) {
@@ -120,5 +123,19 @@ class WellLocation extends Model
             return Carbon::parse($location->updated_at)->diffForHumans();
         }
         return "";
+    }
+
+    public function nearby() {
+        $latitude = $this->latitude;
+        $longitude = $this->longitude;
+        $distance = 5;
+        $circle_radius = 3959;
+        return WellLocation::where([
+            ['latitude',  '!=', $latitude],
+            ['longitude', '!=', $longitude]
+        ])->whereRaw( DB::raw( "($circle_radius * acos(
+                        cos(radians($latitude)) * cos(radians(latitude ))  *
+                        cos(radians(longitude) - radians($longitude)) +
+                        sin(radians($latitude)) * sin(radians(latitude)))) < $distance "))->limit(25)->get();
     }
 }

@@ -23,17 +23,7 @@
     @include('layouts.partials.alerts._alerts')
     @yield('content')
 </div>
-<div>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-8967968920199965",
-            enable_page_level_ads: true
-        });
-    </script>
-</div>
 @include('layouts.partials._footer')
-
 @include('layouts.partials._legal')
 <!-- Scripts -->
 

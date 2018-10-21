@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\WellLocation;
+use App\Models\Location;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -15,17 +15,17 @@ class HomeController extends Controller
 //    }
 
     public function index() {
-        $operators = $states = DB::table('well_locations')->distinct('current_operator')->count('current_operator');
-        $states = DB::table('well_locations')->distinct('state')->count('state');
-        $wells = WellLocation::count();
+        $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
+        $states = DB::table('locations')->distinct('state')->count('state');
+        $wells = Location::count();
 
         return view('home', compact('operators', 'states', 'wells'));
     }
 
     public function test() {
+        $locations = Location::groupBy('state')->get();
 
-
-        dd(auth()->user()->teamMembers());
+        dd($locations);
         return view('test');
     }
 

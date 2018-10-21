@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Middleware\Subscription;
+namespace App\Http\Middleware;
 
 use Closure;
 
-class RedirectIfNotActive
+class CheckTerms
 {
     /**
      * Handle an incoming request.
@@ -15,8 +15,9 @@ class RedirectIfNotActive
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->doesNotHaveSubscription()) {
-            return redirect()->route('plans.index')->with('warning', 'Subscription not active. You\'ll need a plan to search');
+        if (auth()->user()->terms) {
+            return redirect()->route('account.index')
+                ->with('warning', 'You must agree to our terms and privacy policy before using our application.');
         }
         return $next($request);
     }

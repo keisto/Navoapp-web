@@ -21,7 +21,7 @@ class CreateNotesTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('location_id')->references('id')->on('well_locations');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 
