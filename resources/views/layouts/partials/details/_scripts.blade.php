@@ -265,7 +265,8 @@
                 size: new google.maps.Size(32, 40),
                 origin: new google.maps.Point(0, 0),
                 anchor: new google.maps.Point(20, 40),
-                scaledSize: new google.maps.Size(32, 40)};
+                scaledSize: new google.maps.Size(32, 40)
+            };
             var infowindow = new google.maps.InfoWindow();
             var details = "<h3 class='ui header'>" + '{{ strtoupper($location->name) }}' +
                 "<div class='sub header'>" + '{{ strtoupper($location->operator) }}' + "</div></h3>";
@@ -316,7 +317,8 @@
                         size: new google.maps.Size(25, 32),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 32)};
+                        scaledSize: new google.maps.Size(25, 32)
+                    };
                     var details = "<h3 class='ui header'>" + nearbyLocations[i]['name'].toUpperCase() +
                         "<div class='sub header'>" + nearbyLocations[i]['operator'].toUpperCase() + "</div></h3>" +
                         "<a class='ui blue button' href='/" + nearbyLocations[i]['id'] + "'>" +
@@ -331,10 +333,10 @@
                         animation: google.maps.Animation.DROP,
                         title: nearbyLocations[i]['name'],
                     });
-                    // marker.addListener('click', function() {
-                    //     infowindow.setContent(this.info);
-                    //     infowindow.open(map, marker);
-                    // });
+                    marker.addListener('click', function() {
+                        infowindow.setContent(this.info);
+                        infowindow.open(map, marker);
+                    });
                     marker.addListener('mouseover', function() {
                         infowindow.setContent(this.info);
                         infowindow.open(map, marker);
