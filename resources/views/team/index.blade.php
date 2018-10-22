@@ -24,7 +24,13 @@
             @foreach($teamMembers as $member)
                 <tr>
                     <td>
-                        {{ $member->name }}
+                        <h4 class="ui image header">
+                            <img src="https://api.adorable.io/avatars/285/{{ $member->name }}.png"
+                                 class="ui mini rounded image">
+                            <div class="content">
+                                {{ $member->name }}
+                            </div>
+                        </h4>
                     </td>
                     <td>
                         {{ $member->email }}
