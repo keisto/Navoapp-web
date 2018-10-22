@@ -13,7 +13,7 @@
                         Oil & gas well locator made <u>simple</u>.
                         <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $3.99 / month</div>
                     </div>
-                    <button class="ui yellow inline large button">Sign me up!<i class="right arrow icon"></i></button>
+                    <a class="ui yellow inline large button" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
                 @else
                     @notsubscribed
                         <img src="{{ request()->is('subscription') ? asset('images/subscription.svg') : asset('images/package.svg') }}">

@@ -11,9 +11,9 @@ Route::get('user/invoice/{invoice}', function (Request $request, $invoiceId) {
     ]);
 });
 
-Route::get('/mailable', function () {
-    return new App\Mail\Auth\TeamActivationEmail("s", "afds");
-});
+//Route::get('/mailable', function () {
+//    return new App\Mail\Auth\TeamActivationEmail("s", "afds");
+//});
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');

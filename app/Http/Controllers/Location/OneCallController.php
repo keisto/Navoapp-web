@@ -176,7 +176,7 @@ class OneCallController extends Controller
 
     static public function getDrivingDirections($location, $origin) {
         $curl = curl_init();
-
+//        https://maps.googleapis.com/maps/api/directions/json?origin=,&destination=,&key=AIzaSyD9CS2ikhHSGkeU6b1Tch8fnUw2XmACrR4
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://maps.googleapis.com/maps/api/directions/json?origin=". $origin->lat .",". $origin->lon.
                 "&destination=". $location->latitude .",". $location->longitude ."&key=". env('GOOGLE_MAP_KEY'),
