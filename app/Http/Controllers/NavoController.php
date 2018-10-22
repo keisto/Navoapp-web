@@ -33,7 +33,7 @@ class NavoController extends Controller
         $notes = null;
 
         if ($location) {
-            if ($location->closest_city == null) {
+            if ($location->city == null) {
                 OneCallController::getLocationCity($location);
             }
 
@@ -49,7 +49,7 @@ class NavoController extends Controller
                 if ($intersection == null) {
                     $nearbyStreets = OneCallController::getNearbyStreets($location);
                 }
-                if ($location->closest_city != null) {
+                if ($location->city != null) {
                     $directions = OneCallController::getDirections($location);
                 }
             }
@@ -64,8 +64,6 @@ class NavoController extends Controller
             $teamMembers = auth()->user()->teamMemberNumbers();
 
             $nearby = $location->nearby();
-
-//            dd($nearby);
 
             return view('detail', compact('location', 'onecaller',
                 'intersection', 'nearbyStreets', 'directions', 'notes', 'teamMembers', 'nearby'));
