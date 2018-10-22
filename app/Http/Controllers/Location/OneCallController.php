@@ -10,8 +10,8 @@ class OneCallController extends Controller
     static public function locationCityStore($location, $city) {
         if (auth()->user()->hasSubscription()) {
             if ($location) {
-                if ($location->closest_city == null) {
-                    $location->closest_city = $city;
+                if ($location->city == null) {
+                    $location->city = $city;
                     $location->save();
                 }
             }
@@ -146,7 +146,7 @@ class OneCallController extends Controller
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://maps.googleapis.com/maps/api/geocode/json?address=".
-                str_replace(" ", "+", $location->closest_city) ."+".
+                str_replace(" ", "+", $location->city) ."+".
                 str_replace(" ", "+", $location->state) ."&key=" . env('GOOGLE_MAP_KEY'),
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",

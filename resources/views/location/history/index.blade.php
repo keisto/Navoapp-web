@@ -27,13 +27,13 @@
             @foreach($history as $location)
                 <tr>
                     <td>
-                        {{ $location->well_name }}
+                        {{ strtoupper($location->name) }}
                     </td>
                     <td>
-                        {{ $location->current_operator }}
+                        {{ strtoupper($location->operator) }}
                     </td>
                     <td>
-                        {{ $location->closest_city }}
+                        {{ $location->city }}
                     </td>
                     <td>
                         {{ $location->state }}
@@ -63,7 +63,6 @@
             setTimeout(function () {
                 $('table').tablesort();
             }, 1000);
-
         });
     </script>
 @endsection

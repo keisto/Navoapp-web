@@ -126,16 +126,19 @@ class Location extends Model
     }
 
     public function nearby() {
-        $latitude = $this->latitude;
-        $longitude = $this->longitude;
-        $distance = 5;
-        $circle_radius = 3959;
-        return WellLocation::where([
-            ['latitude',  '!=', $latitude],
-            ['longitude', '!=', $longitude]
-        ])->whereRaw( DB::raw( "($circle_radius * acos(
-                        cos(radians($latitude)) * cos(radians(latitude ))  *
-                        cos(radians(longitude) - radians($longitude)) +
-                        sin(radians($latitude)) * sin(radians(latitude)))) < $distance "))->limit(25)->get();
+        $lat= $this->latitude;
+        $lng= $this->longitude;
+        $max_distance = 5;
+        // $circle_radius = 3959;
+        $selected = "(6371 * acos(cos(radians(" . $lat . ")) 
+                    * cos(radians(`latitude`)) 
+                    * cos(radians(`longitude`) 
+                    - radians(" . $lng . ")) 
+                    + sin(radians(" . $lat . ")) 
+                    * sin(radians(`latitude`))))";
+
+        return Location::select('id', 'name', 'operator', 'latitude', 'longitude')
+            ->selectRaw("{$selected} AS distance")
+            ->whereRaw("{$selected} < ?", [$max_distance])->get();
     }
 }

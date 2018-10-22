@@ -195,9 +195,9 @@ svg {
   }
 }
 @media (max-width: 1000px) {
-  .filter-results {
-    display: none
-  }
+  //.filter-results {
+  //  display: none
+  //}
   .fluid-results {
     display: none;
     padding-left: 12px;

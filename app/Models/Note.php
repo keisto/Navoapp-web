@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\WellLocation;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
@@ -12,7 +12,7 @@ class Note extends Model
     }
 
     public function location() {
-        return $this->belongsToMany(WellLocation::class, "location_note", "note_id", "location_id")->withTimestamps();
+        return $this->belongsToMany(Location::class, "location_note", "note_id", "location_id")->withTimestamps();
     }
 
     public function scopeTeamMemberNote($builder, $user_id, $location_id) {

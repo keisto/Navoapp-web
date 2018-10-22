@@ -4,7 +4,7 @@
             <i class="open folder outline blue icon"></i>
             <div class="content">
                 <div class="sub grey header">Well Name:</div>
-                {{ $location->well_name == "" ? "Not found" : title_case($location->well_name) }}
+                {{ $location->name == "" ? "Not found" : title_case($location->name) }}
             </div>
         </h1>
     </div>
@@ -13,7 +13,7 @@
             <i class="hashtag teal icon"></i>
             <div class="content">
                 <div class="sub grey header">API Number:</div>
-                {{ $location->api_number == "" ? "Not found" : $location->api_number  }}
+                {{ $location->api == "" ? "Not found" : $location->api  }}
             </div>
         </h1>
     </div>
@@ -24,7 +24,7 @@
             <i class="address card outline purple icon"></i>
             <div class="content">
                 <div class="sub grey header">Operator:</div>
-                {{ $location->current_operator  == "" ? "Not found" : title_case($location->current_operator) }}
+                {{ $location->operator  == "" ? "Not found" : title_case($location->operator) }}
             </div>
         </h1>
     </div>
@@ -33,7 +33,7 @@
             <i class="info yellow icon"></i>
             <div class="content">
                 <div class="sub grey header">Well Type:</div>
-                {{ $location->well_type == "" ? "not found" : title_case($location->well_type) }}
+                {{ $location->type == "" ? "not found" : title_case($location->type) }}
             </div>
         </h1>
     </div>
@@ -44,16 +44,16 @@
             <i class="map outline green icon"></i>
             <div class="content">
                 <div class="sub grey header">
-                    {{ $location->closest_city  == "" ? "" : "City, " }}
+                    {{ $location->city  == "" ? "" : "City, " }}
                     State -
                     @hasonecall
-                    {{ $location->county_name  == "" ? "" : "County, " }}
+                    {{ $location->county  == "" ? "" : "County, " }}
                     @endhasonecall
                     Country:</div>
-                {{ $location->closest_city  == "" ? "" : $location->closest_city . ", " }}
+                {{ $location->city  == "" ? "" : $location->city . ", " }}
                 {{ $location->state  == "" ? "" : $location->state }}
                 @hasonecall
-                {{ $location->county_name  == "" ? "" : "- " . title_case($location->county_name) . " County "}}
+                {{ $location->county  == "" ? "" : "- " . title_case($location->county) . " County "}}
                 @endhasonecall
                 <i style="position: relative; top: -4px" class="{{ $location->country  == "" ? "united states" : strtolower($location->country) }} flag"></i>
             </div>

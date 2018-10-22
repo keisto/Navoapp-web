@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Location;
 
-use App\Models\WellLocation;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ class FavoriteController extends Controller
     }
 
     public function store($location) {
-        $location = WellLocation::find($location);
+        $location = Location::find($location);
         if ($location) {
             if(auth()->user()->isLocationFavorite($location->id)) {
                 auth()->user()->favorites()->detach($location->id);

@@ -3,10 +3,11 @@
     {{--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>--}}
     <script>
         $( document ).ready(function() {
-
+            setTimeout(function () {
+                $('table').tablesort();
+            }, 1000);
             $('#select_all').checkbox({
                 onChecked() {
-                    console.log('check');
                     const options = $('#team_numbers > option').toArray().map((obj) => obj.value);
                     $('#team_numbers').dropdown('set exactly', options);
                 },
@@ -138,10 +139,10 @@
             });
 
             // $('.ui.modal').modal({ blurring: false });
-            var well_name = "{{ $location->well_name }}";
-            var well_api = "{{ $location->api_number }}";
-            var operator_name = "{{ $location->current_operator }}";
-            var city = "{{ $location->closest_city ? $location->closest_city : ""}}";
+            var well_name = "{{ $location->name }}";
+            var well_api = "{{ $location->api }}";
+            var operator_name = "{{ $location->operator }}";
+            var city = "{{ $location->city ? $location->city : ""}}";
             var state = "{{ $location->state ? $location->state : ""}}";
             var cityState = city + ", " + state;
             var latitude = String("{{ $location->latitude ? $location->latitude : 0 }}");
@@ -255,26 +256,95 @@
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: latitude, lng: longitude},
                 zoom: 18,
+                label: "A",
                 mapTypeId: google.maps.MapTypeId.HYBRID
             });
 
-            {{--var image = "{{ asset('images/point-a.svg') }}";--}}
+            var image = {
+                url : "{{ asset('images/pin-a.svg') }}",
+                size: new google.maps.Size(32, 40),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(20, 40),
+                scaledSize: new google.maps.Size(32, 40)};
+            var infowindow = new google.maps.InfoWindow();
+            var details = "<h3 class='ui header'>" + '{{ strtoupper($location->name) }}' +
+                "<div class='sub header'>" + '{{ strtoupper($location->operator) }}' + "</div></h3>";
             var marker = new google.maps.Marker({
                 position: {lat: latitude, lng: longitude},
+                info: details,
+                icon: image,
+                size: new google.maps.Size(10, 25),
                 map: map,
-                title: '{{ $location->well_name }}',
+                animation: google.maps.Animation.DROP,
+                title: '{{ $location->name }}',
             });
+            marker.addListener('click', function() {
+                infowindow.setContent(this.info);
+                infowindow.open(map, marker);
+                // if (marker.getAnimation() !== null) {
+                //     marker.setAnimation(null);
+                // } else {
+                //     marker.setAnimation(google.maps.Animation.BOUNCE);
+                // }
+            });
+            marker.addListener('mouseover', function() {
+                infowindow.setContent(this.info);
+                infowindow.open(map, marker);
+            });
+            setTimeout(function () {
+                infowindow.setContent(marker.info);
+                infowindow.open(map, marker);
+            }, 1500);
+
+            // marker.addListener('mouseout', function() {
+            //     setTimeout(function () {
+            //         infowindow.close();
+            //     }, 3000);
+            // });
 
             let nearbyLocations = {!! $nearby !!};
             for (let i = 0; i < nearbyLocations.length ; i++) {
                 // console.log(nearbyLocations[i]['well_name']);
+                var infowindow = new google.maps.InfoWindow({
+                    content: "-" + i
+                });
                 let latitude = Number(nearbyLocations[i]['latitude']);
                 let longitude = Number(nearbyLocations[i]['longitude']);
-                let marker = new google.maps.Marker({
-                    position: {lat: latitude, lng: longitude},
-                    map: map,
-                    title: nearbyLocations[i]['well_name'],
-                });
+                if  (latitude != {{ $location->latitude }} && longitude != {{ $location->longitude }}) {
+                    var image = {
+                        url : "{{ asset('images/pin-b.svg') }}",
+                        size: new google.maps.Size(25, 32),
+                        origin: new google.maps.Point(0, 0),
+                        anchor: new google.maps.Point(17, 34),
+                        scaledSize: new google.maps.Size(25, 32)};
+                    var details = "<h3 class='ui header'>" + nearbyLocations[i]['name'].toUpperCase() +
+                        "<div class='sub header'>" + nearbyLocations[i]['operator'].toUpperCase() + "</div></h3>" +
+                        "<a class='ui blue button' href='/" + nearbyLocations[i]['id'] + "'>" +
+                        "<i class='eye icon'></i> View</a>" +
+                        "<a class='ui black icon button' href='/" + nearbyLocations[i]['id'] + "' target='_blank'>" +
+                        "<i class='external square alternate icon'></i></a>";
+                    let marker = new google.maps.Marker({
+                        position: {lat: latitude, lng: longitude},
+                        info: details,
+                        map: map,
+                        icon: image,
+                        animation: google.maps.Animation.DROP,
+                        title: nearbyLocations[i]['name'],
+                    });
+                    // marker.addListener('click', function() {
+                    //     infowindow.setContent(this.info);
+                    //     infowindow.open(map, marker);
+                    // });
+                    marker.addListener('mouseover', function() {
+                        infowindow.setContent(this.info);
+                        infowindow.open(map, marker);
+                    });
+                    // marker.addListener('mouseout', function() {
+                    //     setTimeout(function () {
+                    //         infowindow.close();
+                    //     }, 3000);
+                    // });
+                }
             }
         }
 

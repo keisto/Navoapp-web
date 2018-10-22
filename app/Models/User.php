@@ -46,11 +46,11 @@ class User extends Authenticatable
     }
 
     public function favorites() {
-        return $this->belongsToMany(WellLocation::class,"user_location_favorite", "user_id", "location_id")->withTimestamps();
+        return $this->belongsToMany(Location::class,"user_location_favorite", "user_id", "location_id")->withTimestamps();
     }
 
     public function history() {
-        return $this->belongsToMany(WellLocation::class,"user_location_history", "user_id", "location_id")->withTimestamps();
+        return $this->belongsToMany(Location::class,"user_location_history", "user_id", "location_id")->withTimestamps();
     }
 
     public function noteForLocation($location_id) {
@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
 
     public function isLocationFavorite($id) {
-        $location = WellLocation::find($id);
+        $location = Location::find($id);
         if ($location) {
             return $location->isFavoredByUser(auth()->id());
         }

@@ -26,4 +26,3 @@
             </a>
         </div>
     </div>
-</div> <!-- Important - ending div (See Header) -->
