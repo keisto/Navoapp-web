@@ -28,11 +28,11 @@ class SubscriptionPlanController extends Controller
 //            ->incrementQuantity(5);
         }
         $subscription = $user->subscription('main');
-
         if ($plan->teams_enabled) {
-            $subscription->quantity($plan->teams_limit);
+            $subscription->updateQuantity($plan->teams_limit);
+        } else {
+            $subscription->updateQuantity(1);
         }
-
         $subscription->skipTrial()->swap($plan->gateway_id);
 
         return back()->with('success', 'Your subscription was updated successfully.');
