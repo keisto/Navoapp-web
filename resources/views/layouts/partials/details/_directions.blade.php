@@ -64,7 +64,7 @@
             <i class="road icon"></i>
             <div class="content">
                 <div class="sub grey header">Driving Directions:</div>
-                @if($directions == null) No driving directions found. @else From {{ $location->closest_city }}, {{ $location->state }} @endif
+                @if($directions == null) No driving directions found. @else From {{ $location->city }}, {{ $location->state }} @endif
             </div>
         </h1>
         @if($directions != null)
