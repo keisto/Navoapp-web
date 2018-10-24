@@ -121,7 +121,7 @@
             <i class="times icon"></i>
             Cancel
         </div>
-        <button id="copy_button" onclick="copyMessage();" class="ui yellow left labeled icon disabled button"
+        <button id="copy_button" class="ui yellow left labeled icon disabled button"
             data-tooltip="Copy Message" data-inverted="">
             <i class="copy outline icon"></i>
             Copy Text

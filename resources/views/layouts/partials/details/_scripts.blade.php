@@ -229,7 +229,7 @@
             }
 
 
-            function copyMessage() {
+            $('#copy_button').click(function () {
                 var copyText = message;
                 copyText.select();
                 document.execCommand("copy");
@@ -242,7 +242,7 @@
                 setTimeout(function () {
                     $('#copy_button').attr('data-tooltip', 'Copy Message');
                 }, 2500);
-            }
+            });
         });
 
 
