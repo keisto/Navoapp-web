@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Location;
 
 use Illuminate\Http\Request;
-use App\Models\WellLocation;
+use App\Models\Location;
 use App\Models\Note;
 use App\Http\Controllers\Controller;
 
 class NoteController extends Controller
 {
     public function store(Request $request, $location) {
-        $location = WellLocation::find($location);
+        $location = Location::find($location);
 
         if ($location) {
             if (trim($request->text) == "") {
