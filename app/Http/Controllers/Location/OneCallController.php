@@ -18,6 +18,17 @@ class OneCallController extends Controller
         }
     }
 
+    static public function locationCountyStore($location, $county) {
+        if (auth()->user()->hasSubscription()) {
+            if ($location) {
+                if ($location->county == null) {
+                    $location->county = $county;
+                    $location->save();
+                }
+            }
+        }
+    }
+
     static public function getLocationCity($location) {
         $curl = curl_init();
 
@@ -42,6 +53,7 @@ class OneCallController extends Controller
         if (!$err) {
             if (optional(json_decode($response))->results) {
                 $results = json_decode($response)->results;
+
                 $city = null;
                 $city2 = null;
                 foreach ($results[0]->address_components as $k => $v) {
@@ -50,6 +62,20 @@ class OneCallController extends Controller
                     }
                     if (($v->types[0] == "neighborhood")) {
                         $city2 = $v->long_name;
+                    }
+                    if (($v->types[0] == "administrative_area_level_2")) {
+                        $countyName = $v->long_name;
+                        $county = "";
+                        $ar = explode(' ', $countyName);
+                        foreach ($ar as $a) {
+                            if ($a != "County") {
+                                $county.=$a;
+                            }
+                        }
+
+                        if ($location->county == null) {
+                            OneCallController::locationCountyStore($location, trim($county));
+                        }
                     }
                 }
                 if ($city == null) {

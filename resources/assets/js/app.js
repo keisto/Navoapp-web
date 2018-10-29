@@ -97,9 +97,9 @@ $( document ).ready(function() {
                     "margin": "calc(2rem - 0.14285714em ) 0em 1rem",
                     "opacity": "1",
                 });
-                $('.fluid-results').css({
-                    "display": "none"
-                });
+                // $('.fluid-results').css({
+                //     "display": "none"
+                // });
                 setTimeout(function () {
                     $('.navo-2').css({
                         "padding-right": "-300px",

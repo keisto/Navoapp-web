@@ -8,10 +8,10 @@
         <div id="home-header" style="display: flex; justify-content: space-around; align-items: center;">
             <h1 class="ui jumbotron inline header" >
                 @guest
-                    <img src="{{ asset('images/punit.svg') }}">
+                    <img src="{{ asset('images/navo-logo.svg') }}">
                     <div class="content">
-                        Oil & gas well locator made <u>simple</u>.
-                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $3.99 / month</div>
+                        Oil & Gas well locator made <u>simple</u>.
+                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $6.99 / month</div>
                     </div>
                     <a class="ui yellow inline large button" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
                 @else

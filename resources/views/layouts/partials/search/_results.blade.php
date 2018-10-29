@@ -1,4 +1,4 @@
-<div class="ui fluid container padder fluid-results" style="{{ $agent->isDesktop() ? "display:none;" : "padding-left:12px; padding-right:12px" }}">
+<div class="ui fluid container padder fluid-results" style="{{ $agent->isDesktop() ? "" : "padding-left:12px; padding-right:12px" }}">
     <ais-no-results style="text-align: center"></ais-no-results>
     <div style="display: flex; {{ !$agent->isDesktop() ? "flex-direction: column" : "" }}" >
         @include("layouts.partials.search._filter")
