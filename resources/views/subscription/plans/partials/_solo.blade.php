@@ -6,7 +6,7 @@
                     <img src="{{ asset('images/level1.svg') }}">
                     <div class="content">
                         Basic Locator
-                        <div class="sub header">7 Day Free Trial</div>
+                        <div class="sub header">3 Day Free Trial</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">
@@ -34,9 +34,9 @@
                 </div>
                 <div style="text-align: center">
                     <div class="ui buttons">
-                        <a href="{{ route('subscription.index') }}?plan=basic-monthly" class="ui blue button">$3.99 - Monthly</a>
+                        <a href="{{ route('subscription.index') }}?plan=basic-monthly" class="ui blue button">$6.99 - Monthly</a>
                         <div class="or"></div>
-                        <a href="{{ route('subscription.index') }}?plan=basic-yearly" class="ui green button">$39.90 - Yearly</a>
+                        <a href="{{ route('subscription.index') }}?plan=basic-yearly" class="ui green button">$69.90 - Yearly</a>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <img src="{{ asset('images/level2.svg') }}">
                     <div class="content">
                         Superior Locator
-                        <div class="sub header"></div>
+                        <div class="sub header">3 Day Free Trial</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">
@@ -77,9 +77,9 @@
                 </div>
                 <div style="text-align: center">
                     <div class="ui buttons">
-                        <a href="{{ route('subscription.index') }}?plan=super-monthly" class="ui blue button">$5.99 - Monthly</a>
+                        <a href="{{ route('subscription.index') }}?plan=super-monthly" class="ui blue button">$8.99 - Monthly</a>
                         <div class="or"></div>
-                        <a href="{{ route('subscription.index') }}?plan=super-yearly" class="ui green button">$59.90 - Yearly</a>
+                        <a href="{{ route('subscription.index') }}?plan=super-yearly" class="ui green button">$89.90 - Yearly</a>
                     </div>
                 </div>
             </div>

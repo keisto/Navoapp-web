@@ -5,8 +5,8 @@
                 <h2 class="ui header">
                     <img src="{{ asset('images/level3.svg') }}">
                     <div class="content">
-                        Team Locator - 10 Members
-                        <div class="sub header">You can add more later ($6.99/user/month)</div>
+                        Team Locator - 5 Members
+                        <div class="sub header">You can add more later ($7.99/user/month)</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">
@@ -54,7 +54,7 @@
                         <img class="ui avatar image" style="border-radius: 0" src="{{ asset('images/group.svg') }}">
                         <div class="content">
                             <span class="header">Group Effort</span>
-                            <div class="description">See all team member's location favorites and notes.</div>
+                            <div class="description">See all team member's location notes.</div>
                         </div>
                     </div>
                     <div class="item">
@@ -70,9 +70,9 @@
                 </div>
                 <div style="text-align: center">
                     <div class="ui buttons">
-                        <a href="{{ route('subscription.index') }}?plan=team-monthly" class="ui blue button">$69.90 - Monthly</a>
+                        <a href="{{ route('subscription.index') }}?plan=team-monthly" class="ui blue button">$39.95 - Monthly</a>
                         <div class="or"></div>
-                        <a href="{{ route('subscription.index') }}?plan=team-yearly" class="ui green button">$699.00 - Yearly</a>
+                        <a href="{{ route('subscription.index') }}?plan=team-yearly" class="ui green button">$399.50 - Yearly</a>
                     </div>
                 </div>
             </div>
