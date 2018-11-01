@@ -10,7 +10,7 @@
         @include('subscription.plans.partials._solo')
         @include('subscription.plans.partials._team')
 
-        <div class="ui small modal">
+        <div class="ui small modal" id="modal_onecall">
             <i class="close icon"></i>
             <div class="header">
                 One Call Information:

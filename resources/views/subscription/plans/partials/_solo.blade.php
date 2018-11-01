@@ -1,4 +1,12 @@
 <div class="ui active tab" data-tab="solo">
+    <div class="ui green segment" style="display: flex; justify-content: center">
+        <h4 class="ui header">
+            <i class="money bill alternate outline icon"></i>
+            <div class="content">
+                Yearly plans get <u>2 MONTHS FREE!</u>
+            </div>
+        </h4>
+    </div>
     <div class="ui stackable grid">
         <div class="ui eight wide column">
             <div class="ui segment">
@@ -63,7 +71,7 @@
                         <div class="content">
                             <span class="header">One Call Information</span>
                             <div class="description">View section, range, township, closest city, nearest intersection and driving directions form closest city.
-                                <a onclick="$('.ui.modal').modal('show');" style="text-decoration: underline; color: #838383">Additional Notes</a>
+                                <a onclick="$('#modal_onecall').modal('show');" style="text-decoration: underline; color: #838383">Additional Notes</a>
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
     </div>
     <div class="ui card">
         <div class="content">
-            <img src="{{ asset('images/pin-share.svg') }}" style="width: 32px" class="ui floated left image">
+            <img src="{{ asset('images/pin-near.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Share</div>
             <div class="meta">By text or email</div>
             <div class="description">

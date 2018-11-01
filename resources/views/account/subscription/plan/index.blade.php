@@ -1,17 +1,32 @@
 @extends('account.layouts.default')
 @section('account.content')
+    @if (optional(auth()->user()->subscription('main'))->onTrial())
+        <div class="ui inverted green segment">
+            <i class="exclamation triangle icon"></i>
+            <strong>On Trial Period: </strong> Changing your plan will <u>cancel</u> your trial period.</span>
+        </div>
+    @endif
     <div class="ui segment">
-        <p>Current Plan: {{ auth()->user()->plan->name }} (${{ auth()->user()->plan()->price }} - {{ auth()->user()->plan()->recurring }})</p>
-
+        @if (auth()->user()->plan->isForTeams())
+            <p>Current Plan: {{ auth()->user()->plan->name }} (${{ auth()->user()->plan()->price }} per member- {{ auth()->user()->plan()->recurring }})</p>
+        @else
+            <p>Current Plan: {{ auth()->user()->plan->name }} (${{ auth()->user()->plan()->price }} - {{ auth()->user()->plan()->recurring }})</p>
+        @endif
         <form class="ui form" method="POST" action="{{ route('account.subscription.plan.store') }}">
             @csrf
             <div class="field {{ $errors->has('plan') ? 'error' : '' }}">
                 <label>Plan</label>
                 <select class="ui fluid dropdown" id="plan" name="plan">
                     @foreach($plans as $plan)
-                        <option value="{{ $plan->gateway_id }}">
-                            {{ $plan->name }} - ({{ $plan->price }} - {{ $plan->recurring }})
-                        </option>
+                        @if ($plan->isForTeams())
+                            <option value="{{ $plan->gateway_id }}">
+                                {{ $plan->name }} - ({{ $plan->price }} per member - {{ $plan->recurring }})
+                            </option>
+                        @else
+                            <option value="{{ $plan->gateway_id }}">
+                                {{ $plan->name }} - ({{ $plan->price }} - {{ $plan->recurring }})
+                            </option>
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -35,10 +50,10 @@
             <div class="field {{ $errors->has('team_size') ? 'error' : '' }}">
                 <div class="ui left icon right labeled input">
                     <i class="group icon"></i>
-                    <input type="number" name="team_size" id="units" placeholder="Number of users" min="10" step="1"
+                    <input type="number" name="team_size" id="units" placeholder="Number of users" min="5" step="1"
                            value="{{ auth()->user()->subscription('main')->quantity }}">
                     <div class="ui yellow label">
-                       @ $ 6.99 / User
+                       @ $ 7.99 / User
                     </div>
                 </div>
             </div>
@@ -50,8 +65,12 @@
                 </div>
             @endif
             <button type="submit" class="ui green submit button">Update Team Limit</button>
-            <span>Your {{ auth()->user()->plan->recurring }} bill will be: $
-                <span id="current_pay" style="font-weight: bold">{{ number_format(auth()->user()->subscription('main')->quantity * 6.99, 2) }}</span>
+            <span>Your <span id="recurring">{{ auth()->user()->plan->recurring }}</span> bill will be: $
+                @if (auth()->user()->plan->recurring == "monthly")
+                    <span id="current_pay" style="font-weight: bold">{{ number_format(auth()->user()->subscription('main')->quantity * 7.99, 2) }}</span>
+                @else
+                    <span id="current_pay" style="font-weight: bold">{{ number_format(auth()->user()->subscription('main')->quantity * 79.90, 2) }}</span>
+                @endif
                 <span data-tooltip="This is a base price. Read note below." data-inverted="">
                     <i class="icons">
                         <i class="info circle orange icon"></i>
@@ -61,15 +80,15 @@
                 </span>
             <div class="ui red message">
                 <div class="content">
-                    <p><strong>Please Note:</strong> Accounts are prorated. Your next month bill maybe different than what is estimated above</p>
+                    <p><strong>Please Note:</strong> Accounts are prorated. Your next month bill maybe different than what is estimated above.</p>
                 </div>
             </div>
-            <p><strong>Increasing Team:</strong> If you paid for 10 users $29.90 and want to increase to 20 users in the middle of the month.
-                Your next month bill will be for 20 users @ $6.99 ($139.80) <u><strong>plus</strong> $34.95 </u> =
-                $174.75. The following month will be back at the price shown above.</p>
-            <p><strong>Decreasing Team:</strong> If you paid for 20 users ($139.80) and want to decrease to 10 users in the middle of the month.
-                Your next month bill will be for 10 users @ $6.99 ($69.90) <u><strong>minus</strong> $34.95 (credit)</u> =
-                $34.95. The following month will be back at the price shown above.</p>
+            <p><strong>Increasing Team:</strong> If you paid for 5 users $39.95 and want to increase to 10 users in the middle of the month.
+                Your next month bill will be for 10 users @ $7.99 ($79.90) <u><strong>plus</strong> 19.97 </u> =
+                $99.87. The following month will be back at the price shown above.</p>
+            <p><strong>Decreasing Team:</strong> If you paid for 10 users ($79.90) and want to decrease to 5 users in the middle of the month.
+                Your next month bill will be for 5 users @ $7.99 ($39.95) <u><strong>minus</strong> $19.97 (credit)</u> =
+                $19.97. The following month will be back at the price shown above.</p>
             <p><strong>Questions:</strong> <a href="mailto:tony@navoapp.io">Email us</a> if you have any questions or need clarification.</p>
         </form>
     </div>
@@ -86,19 +105,20 @@
                 newPayment($('#units').val())
             });
 
+            var recurring = $("#recurring").text();
             function newPayment(units) {
-                if (units >= 10) {
-                    {{--var x = ((units * 2.99)-{{ auth()->user()->subscription('main')->quantity * 2.99 }}).toFixed(2);--}}
-                    {{--$('#payment_due').text(x);--}}
-                    // if (x < 0.00) {
-                    //     $('#current_pay').text(((units * 2.99).toFixed(2)) + " " +  x " ");
-                    // } else {
-                    //     $('#current_pay').text((units * 2.99).toFixed(2));
-                    // }
-                    $('#current_pay').text((units * 6.99).toFixed(2));
+                if (units >= 5) {
+                    if (recurring== "monthly") {
+                        $('#current_pay').text((units * 7.99).toFixed(2));
+                    } else {
+                        $('#current_pay').text((units * 79.90).toFixed(2));
+                    }
                 } else {
-                    // $('#payment_due').text("0.00");
-                    $('#current_pay').text(({{ auth()->user()->subscription('main')->quantity * 6.99 }}).toFixed(2));
+                    if (recurring == "monthly") {
+                        $('#current_pay').text(({{ auth()->user()->subscription('main')->quantity * 7.99 }}).toFixed(2));
+                    } else {
+                        $('#current_pay').text(({{ auth()->user()->subscription('main')->quantity * 79.90 }}).toFixed(2));
+                    }
                 }
             }
         });

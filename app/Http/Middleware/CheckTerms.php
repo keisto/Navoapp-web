@@ -15,7 +15,7 @@ class CheckTerms
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->terms) {
+        if (auth()->user()->terms==0) {
             return redirect()->route('account.index')
                 ->with('warning', 'You must agree to our terms and privacy policy before using our application.');
         }

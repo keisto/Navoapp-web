@@ -88,7 +88,9 @@ class RegisterController extends Controller
             'name' => "Anonymous " . $animals[random_int(0, count($animals)-1)],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'activated' => false,
+            'terms' => 1,
+            // Come back to this if it becomes a problem
+            'activated' => true,
         ]);
 
         event(new UserSignedUp($user));

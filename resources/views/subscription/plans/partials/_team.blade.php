@@ -1,4 +1,12 @@
 <div class="ui tab" data-tab="team">
+    <div class="ui green segment" style="display: flex; justify-content: center">
+        <h4 class="ui header">
+            <i class="money bill alternate outline icon"></i>
+            <div class="content">
+                Yearly plans get <u>2 MONTHS FREE!</u>
+            </div>
+        </h4>
+    </div>
     <div class="ui stackable grid">
         <div class="ui sixteen wide wide column">
             <div class="ui segment">
@@ -6,7 +14,7 @@
                     <img src="{{ asset('images/level3.svg') }}">
                     <div class="content">
                         Team Locator - 5 Members
-                        <div class="sub header">You can add more later ($7.99/user/month)</div>
+                        <div class="sub header">You can add more members later ($7.99/member/month)</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">
@@ -36,7 +44,7 @@
                         <div class="content">
                             <span class="header">One Call Information</span>
                             <div class="description">View section, range, township, closest city, nearest intersection and driving directions form closest city.
-                                <a onclick="$('.ui.modal').modal('show');" style="text-decoration: underline; color: #838383">Additional Notes</a>
+                                <a onclick="$('#modal_onecall').modal('show');" style="text-decoration: underline; color: #838383">Additional Notes</a>
                             </div>
                         </div>
                     </div>

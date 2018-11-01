@@ -17,8 +17,10 @@
             @endif
             <button type="submit" class="ui yellow submit button">Deactivate Account</button>
             @notcancelled
-            <span>This will also cancel your active subscription.</span>
+                @if (!auth()->user()->hasPiggybackSubscription())
+                    <span>This will also cancel your active subscription.</span>
+                @endif
             @endnotcancelled
-        </form>
-    </div>
+</form>
+</div>
 @endsection

@@ -32,8 +32,9 @@
 
         $('#update').click(function (e) {
             handler.open({
-                name: 'Navo - Oil Well Finder',
+                name: 'Navoapp.io Locator',
                 currency: 'usd',
+                image: '{{ asset('images/navo-facebook.png') }}',
                 key: '{{ config('services.stripe.key') }}',
                 email: '{{ auth()->user()->email }}',
                 panelLabel: 'Update Card'

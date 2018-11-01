@@ -2,6 +2,37 @@
 @section('content')
     @include("layouts.partials._home-header")
     <div class="ui container">
+        <div class="ui inverted blue very padded raised segment">
+            <div class="ui header">
+                <i class="info circle icon"></i> Currently we only have these states loaded:
+            </div>
+            <div class="ui ordered horizontal list" style="display: flex; justify-content: center">
+                <div class="item">
+                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=MT&background=1a1f3d&color=FFFFFF" width="32px">
+                    <div class="content">
+                        <div class="header">Montana</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=ND&background=1a1f3d&color=FFFFFF" width="32px">
+                    <div class="content">
+                        <div class="header">North Dakota</div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=SD&background=1a1f3d&color=FFFFFF" width="32px">
+                    <div class="content">
+                        <div class="header">South Dakota</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui center aligned container">
+            <h4>Let us know about your state and we will get it added ASAP.
+                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:tony@navoapp.io"><i class="mail large icon"></i></a>
+            </h4>
+            </div>
+        </div>
+
         <div class="ui three statistics padder">
             <div class="statistic">
                 <div class="value">
@@ -27,13 +58,13 @@
                     {{ number_format($states,0) }}
                 </div>
                 <div class="label">
-                    States (including Canada)
+                    States
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="simple-search" class="ui raised very padded segment container" style="@if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) @else background-image:none !important; @endif ">
+    <div id="simple-search" class="ui container" style="@if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) padding-top: 52px; padding-bottom: 32px; @else background-image:none; !important; @endif ">
         <h2 class="ui header">Fast & Simple Search</h2>
         <div class="ui relaxed divided list">
             <div class="item">
@@ -57,7 +88,6 @@
                     <div class="description">State, Field, Type, Operator</div>
                 </div>
             </div>
-
         </div>
     </div>
 

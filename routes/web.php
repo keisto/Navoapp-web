@@ -58,6 +58,8 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'],
     Route::get('/deactivate', 'DeactivateController@index')->name('deactivate.index');
     Route::post('/deactivate', 'DeactivateController@store')->name('deactivate.store');
 
+    Route::get('/agreement', 'ProfileController@terms')->name('agreement.terms');
+
     Route::group(['prefix' => 'subscription', 'namespace' => 'Subscription', 'middleware' => ['subscription.owner']], function () {
         /**
          * Resume Service

@@ -10,10 +10,14 @@
                 @guest
                     <img src="{{ asset('images/navo-logo.svg') }}">
                     <div class="content">
-                        Oil & Gas well locator made <u>simple</u>.
+                        Oil & Gas Well locator made <u>simple</u>.
                         <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $6.99 / month</div>
                     </div>
+                    @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet())
+                    <a class="ui yellow inline large button" style="margin-left: 32px" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
+                    @else
                     <a class="ui yellow inline large button" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
+                    @endif
                 @else
                     @notsubscribed
                         <img src="{{ request()->is('subscription') ? asset('images/subscription.svg') : asset('images/package.svg') }}">

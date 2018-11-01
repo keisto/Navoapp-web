@@ -64,9 +64,10 @@
 
         $('#pay').click(function (e) {
            handler.open({
-               name: 'Navo - Oil Well Finder',
+               name: 'Navoapp.io Locator',
                description: 'Membership',
                currency: 'usd',
+               image: '{{ asset('images/navo-facebook.png') }}',
                key: '{{ config('services.stripe.key') }}',
                email: '{{ auth()->user()->email }}'
            });

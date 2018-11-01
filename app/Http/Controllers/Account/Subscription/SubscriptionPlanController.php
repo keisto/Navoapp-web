@@ -40,8 +40,12 @@ class SubscriptionPlanController extends Controller
 
     public function increase(Request $request) {
         $user = $request->user();
-        $user->subscription('main')->updateQuantity($request->team_size);
-        return redirect()->route('account.subscription.team.index')->with('success', 'Your team size was increased successfully.');
+        if ($request->team_size>=5) {
+            $user->subscription('main')->updateQuantity($request->team_size);
+            return redirect()->route('account.subscription.team.index')->with('success', 'Your team size was increased successfully.');
+        } else {
+            return redirect()->route('account.subscription.plan.index')->with('error', 'Your team size cannot be less than 5');
+        }
     }
 
     protected function downgradesFromTeamPlan(User $user, Plan $plan) {

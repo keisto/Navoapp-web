@@ -63,6 +63,8 @@ class OneCallController extends Controller
                     if (($v->types[0] == "neighborhood")) {
                         $city2 = $v->long_name;
                     }
+                }
+                foreach ($results[1]->address_components as $k => $v) {
                     if (($v->types[0] == "administrative_area_level_2")) {
                         $countyName = $v->long_name;
                         $county = "";
@@ -72,7 +74,6 @@ class OneCallController extends Controller
                                 $county.=$a;
                             }
                         }
-
                         if ($location->county == null) {
                             OneCallController::locationCountyStore($location, trim($county));
                         }
