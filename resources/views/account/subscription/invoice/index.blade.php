@@ -6,7 +6,7 @@
             <div class="@if ($loop->first) active @endif title">
                 <i class="dropdown icon"></i>
                 {{ Carbon\Carbon::parse($invoice->date()->toFormattedDateString())->format('F') }}
-                @if ($invoice->total == 0)
+                @if ($invoice->total == 0 && optional(auth()->user()->subscription('main'))->onTrial())
                     <span class="ui green small label" style="float: right; margin-top: -2.5px;">Trial Period</span>
                 @else
                     <span class="ui red small label" style="float: right; margin-top: -2.5px;">{{ $invoice->total() }}</span>
