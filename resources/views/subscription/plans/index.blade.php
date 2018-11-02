@@ -6,7 +6,14 @@
             <a class="item active" data-tab="solo"><i class="user icon"></i> Individual</a>
             <a class="item" data-tab="team"><i class="group icon"></i> Teams <span class="ui green label"><i class="thumbs up icon"></i> Businesses!</span></a>
         </div>
-
+        <div class="ui pink segment" style="display: flex; justify-content: center">
+            <h4 class="ui header">
+                <i class="tag icon"></i>
+                <div class="content">
+                    Use coupon code: <u>EARLYBIRD</u> at check out and save 33% for <strong>12 months</strong> or <strong>1 year</strong>!
+                </div>
+            </h4>
+        </div>
         @include('subscription.plans.partials._solo')
         @include('subscription.plans.partials._team')
 
