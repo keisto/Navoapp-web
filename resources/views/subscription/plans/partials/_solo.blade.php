@@ -14,7 +14,7 @@
                     <img src="{{ asset('images/level1.svg') }}">
                     <div class="content">
                         Basic Locator
-                        <div class="sub header">3 Day Free Trial</div>
+                        <div class="sub header">7 Day Free Trial</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">
@@ -55,7 +55,7 @@
                     <img src="{{ asset('images/level2.svg') }}">
                     <div class="content">
                         Superior Locator
-                        <div class="sub header">3 Day Free Trial</div>
+                        <div class="sub header">7 Day Free Trial</div>
                     </div>
                 </h2>
                 <div class="ui relaxed divided list" style="margin: 2em 0;">

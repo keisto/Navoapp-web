@@ -10,7 +10,7 @@
             <h4 class="ui header">
                 <i class="tag icon"></i>
                 <div class="content">
-                    Use coupon code: <u>EARLYBIRD</u> at check out and save 33% for <strong>12 months</strong> or <strong>1 year</strong>!
+                    Use coupon code: <u>EARLYBIRD</u> at check out and save 50% for <strong>12 months</strong> or <strong>1 year</strong>!
                 </div>
             </h4>
         </div>

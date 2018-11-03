@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +17,7 @@
     <link rel="mask-icon" href="{{ asset('/images/favicon/safari-pinned-tab.svg') }}" color="#6435c9">
     <meta name="msapplication-TileColor" content="#6435c9">
     <meta name="theme-color" content="#6435c9">
-
+    <meta property="og:image" content="{{ asset('/images/navo-facebook.png') }}" />
     <title>{{ config('app.name', 'Navo') }}</title>
 
     <!-- Styles -->

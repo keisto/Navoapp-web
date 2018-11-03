@@ -27,7 +27,7 @@ class SubscriptionController extends Controller
         if ($plan->teams_enabled) {
             $subscription->quantity($plan->teams_limit);
         } else {
-            $subscription->trialDays(3);
+            $subscription->trialDays(7);
         }
 
         $subscription->create($request->token);
