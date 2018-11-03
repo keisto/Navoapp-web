@@ -11,7 +11,7 @@
                     <img src="{{ asset('images/navo-logo.svg') }}">
                     <div class="content">
                         Oil & Gas Well locator made <u>simple</u>.
-                        <div class="sub header" style="color:#f6e7ff !important;">Plans starting at $6.99 / month</div>
+                        <div class="sub header" style="color:rgba(255,255,255,0.7) !important;">Individual and Team Plans available! <a href="{{ route('plans.index') }}">Click Here</a></div>
                     </div>
                     @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet())
                     <a class="ui yellow inline large button" style="margin-left: 32px" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
