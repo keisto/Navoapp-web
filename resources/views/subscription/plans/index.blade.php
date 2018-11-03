@@ -14,7 +14,6 @@
                 </div>
             </h4>
         </div>
-        📢 Use coupon code: "EARLYBIRD" 🏷️ and get 50% off for the first year or (12 months) Visit us at http://navoapp.io
         @include('subscription.plans.partials._solo')
         @include('subscription.plans.partials._team')
 
