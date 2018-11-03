@@ -17,7 +17,7 @@
     <link rel="mask-icon" href="{{ asset('/images/favicon/safari-pinned-tab.svg') }}" color="#6435c9">
     <meta name="msapplication-TileColor" content="#6435c9">
     <meta name="theme-color" content="#6435c9">
-    <meta property="og:image" content="{{ asset('/images/navo-facebook.png') }}" />
+    <meta property="og:image" content="https://navoapp.io/images/navo-facebook.png" />
     <title>{{ config('app.name', 'Navo') }}</title>
 
     <!-- Styles -->
