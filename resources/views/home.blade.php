@@ -2,37 +2,6 @@
 @section('content')
     @include("layouts.partials._home-header")
     <div class="ui container">
-        <div class="ui inverted blue very padded raised segment">
-            <div class="ui header">
-                <i class="info circle icon"></i> Currently we only have these states loaded:
-            </div>
-            <div class="ui ordered horizontal list" style="display: flex; justify-content: center">
-                <div class="item">
-                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=MT&background=1a1f3d&color=FFFFFF" width="32px">
-                    <div class="content">
-                        <div class="header">Montana</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=ND&background=1a1f3d&color=FFFFFF" width="32px">
-                    <div class="content">
-                        <div class="header">North Dakota</div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="ui rounded image" src="https://ui-avatars.com/api/?name=SD&background=1a1f3d&color=FFFFFF" width="32px">
-                    <div class="content">
-                        <div class="header">South Dakota</div>
-                    </div>
-                </div>
-            </div>
-            <div class="ui center aligned container">
-            <h4>Let us know about your state and we will get it added ASAP.
-                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:tony@navoapp.io"><i class="mail large icon"></i></a>
-            </h4>
-            </div>
-        </div>
-
         <div class="ui three statistics padder">
             <div class="statistic">
                 <div class="value">
@@ -61,6 +30,48 @@
                     States
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="ui center aligned container">
+        <div class="ui header">
+            Currently we provide service to these states:
+        </div>
+        <div class="ui ordered horizontal list" style="display: flex; justify-content: center">
+            <div class="item">
+                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=AK&background=1a1f3d&color=FFFFFF" width="32px">
+                <div class="content">
+                    <div class="header">Alaska</div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=CO&background=1a1f3d&color=FFFFFF" width="32px">
+                <div class="content">
+                    <div class="header">Colorado</div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=MT&background=1a1f3d&color=FFFFFF" width="32px">
+                <div class="content">
+                    <div class="header">Montana</div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=ND&background=1a1f3d&color=FFFFFF" width="32px">
+                <div class="content">
+                    <div class="header">North Dakota</div>
+                </div>
+            </div>
+            <div class="item">
+                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=SD&background=1a1f3d&color=FFFFFF" width="32px">
+                <div class="content">
+                    <div class="header">South Dakota</div>
+                </div>
+            </div>
+        </div>
+        <div class="ui center aligned padder container">
+            <h4>Let us know about your state and we will get it added ASAP.
+                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:tony@navoapp.io"><i class="mail large icon"></i></a>
+            </h4>
         </div>
     </div>
 
