@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\HasConfirmationTokens;
 use App\Models\Traits\HasSubscriptions;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +13,7 @@ use Laravel\Cashier\Subscription;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasConfirmationTokens, Billable, HasSubscriptions, SoftDeletes;
+    use Notifiable, HasConfirmationTokens, Billable, HasSubscriptions, SoftDeletes, HasApiTokens;
 
 
     /**

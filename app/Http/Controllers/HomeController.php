@@ -18,8 +18,12 @@ class HomeController extends Controller
         $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
         $states = DB::table('locations')->distinct('state')->count('state');
         $wells = Location::count();
+        $eachStateCount = DB::table('locations')
+            ->select('state as name', DB::raw('count(*) as total'))
+            ->groupBy('state')
+            ->get();
 
-        return view('home', compact('operators', 'states', 'wells'));
+        return view('home', compact('operators', 'states', 'wells', 'eachStateCount'));
     }
 
     public function test() {

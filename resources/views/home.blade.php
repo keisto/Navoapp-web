@@ -32,45 +32,25 @@
             </div>
         </div>
     </div>
-    <div class="ui center aligned container">
-        <div class="ui header">
+    <div class="ui segment container">
+        <div class="ui header" style="font-weight: normal; color: #838383">
             Currently we provide service to these states:
         </div>
-        <div class="ui ordered horizontal list" style="display: flex; justify-content: center">
-            <div class="item">
-                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=AK&background=1a1f3d&color=FFFFFF" width="32px">
-                <div class="content">
-                    <div class="header">Alaska</div>
+        <div class="ui divided animated list">
+            @foreach($eachStateCount as $state)
+                <div class="item">
+                    <div class="right floated  content">
+                        <div class="ui teal label"><span style="font-weight: normal">Well Count:</span> {{ number_format($state->total,0) }}</div>
+                    </div>
+                    <div class="middle aligned content">
+                        <h3>{{ $state->name }}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=CO&background=1a1f3d&color=FFFFFF" width="32px">
-                <div class="content">
-                    <div class="header">Colorado</div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=MT&background=1a1f3d&color=FFFFFF" width="32px">
-                <div class="content">
-                    <div class="header">Montana</div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=ND&background=1a1f3d&color=FFFFFF" width="32px">
-                <div class="content">
-                    <div class="header">North Dakota</div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="ui rounded image" src="https://ui-avatars.com/api/?name=SD&background=1a1f3d&color=FFFFFF" width="32px">
-                <div class="content">
-                    <div class="header">South Dakota</div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="ui center aligned padder container">
+        <div class="ui center aligned container" style="padding-top: 20px">
             <h4>Let us know about your state and we will get it added ASAP.
-                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:tony@navoapp.io"><i class="mail large icon"></i></a>
+                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:support@navoapp.io"><i class="mail large icon"></i></a>
             </h4>
         </div>
     </div>

@@ -15,6 +15,7 @@
         "jenssegers/agent": "^2.6",
         "laravel/cashier": "^7.2",
         "laravel/framework": "5.7.*",
+        "laravel/passport": "^7.0",
         "laravel/scout": "^5.0",
         "laravel/tinker": "^1.0",
         "stripe/stripe-php": "^5.9.2",

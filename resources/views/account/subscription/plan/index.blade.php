@@ -89,7 +89,7 @@
             <p><strong>Decreasing Team:</strong> If you paid for 10 users ($79.90) and want to decrease to 5 users in the middle of the month.
                 Your next month bill will be for 5 users @ $7.99 ($39.95) <u><strong>minus</strong> $19.97 (credit)</u> =
                 $19.97. The following month will be back at the price shown above.</p>
-            <p><strong>Questions:</strong> <a href="mailto:tony@navoapp.io">Email us</a> if you have any questions or need clarification.</p>
+            <p><strong>Questions:</strong> <a href="mailto:support@navoapp.io">Email us</a> if you have any questions or need clarification.</p>
         </form>
     </div>
     @endteamsubscription

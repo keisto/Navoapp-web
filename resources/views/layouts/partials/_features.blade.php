@@ -107,6 +107,16 @@
     </div>
     <div class="ui card">
         <div class="content">
+            <img src="{{ asset('images/navigation.svg') }}" style="width: 32px" class="ui floated left image">
+            <div class="header">Well Navigation</div>
+            <div class="meta">Turn by Turn</div>
+            <div class="description">
+                Currently this defaults to whatever you have installed with your phone.
+            </div>
+        </div>
+    </div>
+    <div class="ui card">
+        <div class="content">
             <img src="{{ asset('images/analytics.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Well Analytics</div>
             <div class="meta">Stats & graphs</div>
@@ -131,7 +141,7 @@
             <div class="header">And More!</div>
             <div class="meta">Looking for more info?</div>
             <div class="description">
-                <a href="mailto:tony@navoapp.io">Email any requests or suggestions!</a>
+                <a href="mailto:feedback@navoapp.io">Email any requests or suggestions!</a>
             </div>
         </div>
     </div>

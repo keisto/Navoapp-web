@@ -33,7 +33,7 @@
                         <i class="hashtag blue mini icon"></i>
                         Section, Range, Township:
                     </h4>
-                    <p>Section, range, and township may not always be provided.</p>
+                    <p>Section, Quarter, Range, and Township common details when submitting a one call.</p>
                     <h4 class="ui header">
                         <i class="map outline violet mini icon"></i>
                         Location County Name
@@ -51,7 +51,7 @@
                         Driving Direction:
                     </h4>
                     <p>Driving are based from off of Google's mapping and should be looked over as some lease roads may not be recognized.</p>
-                    <p style="color:#838383;">Please contact our <a href="mailto:tony@navoapp.io">support</a> for any questions.</p>
+                    <p style="color:#838383;">Please contact our <a href="mailto:support@navoapp.io">support</a> for any questions.</p>
                 </div>
             </div>
             <div class="actions">
