@@ -3,7 +3,7 @@
                         <i class="icon history"></i>
                         Last Modification:
                     </span>
-        {{ \Carbon\Carbon::parse($location->updated_at)->diffForHumans() }}
+        {{ \Carbon\Carbon::parse($location->updated_at ? $location->updated_at : "10/16/2018")->diffForHumans() }}
     </p>
     <div style="display: flex; justify-content: space-between;">
         <a class="ui black button" href="{{ url()->previous() }}">
