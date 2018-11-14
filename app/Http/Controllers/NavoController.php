@@ -13,15 +13,16 @@ class NavoController extends Controller
 {
 
     public function search() {
-        $locations = Location::all();
-        $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
-        $states = DB::table('locations')->distinct('state')->count('state');
-        $wells = Location::count();
+//        $locations = Location::all();
+//        $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
+//        $states = DB::table('locations')->distinct('state')->count('state');
+//        $wells = Location::count();
         $agent = new Agent();
         if(auth()->user()->doesNotHaveSubscription()) {
             return redirect('plans.index')->with('error', 'Sorry, you\'ll need a plan to start searching.');
         }
-        return view('search', compact('locations', 'operators', 'states', 'wells', 'agent'));
+//        return view('search', compact('locations', 'operators', 'states', 'wells', 'agent'));
+        return view('search', compact( 'agent'));
     }
 
     public function detail($location) {
