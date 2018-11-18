@@ -39,7 +39,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:100,100i,400,400i,700,700i,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dist/calendar.min.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('dist/calendar.min.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('dist/semantic.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
