@@ -20,6 +20,22 @@
     <meta property="og:image" content="https://navoapp.io/images/navo-facebook.png" />
     <title>{{ config('app.name', 'Navo') }}</title>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129313407-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-129313407-1');
+    </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8967968920199965",
+            enable_page_level_ads: true
+        });
+    </script>
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700|Roboto:100,100i,400,400i,700,700i,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i" rel="stylesheet">
