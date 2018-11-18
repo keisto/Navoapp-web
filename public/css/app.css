@@ -402,3 +402,16 @@ a:focus {
   display: none;
 }
 
+.chatlio-widget-body {
+  border: 1px solid #c0c3d8;
+}
+
+.chatlio-chat-header {
+  background: #1a1f3d !important;
+  color: white;
+}
+
+.chatlio-chat-header-menu__menu-item {
+  color: #c0c3d8;
+}
+
