@@ -22,7 +22,7 @@ class UserController extends Controller
             $success['token'] =  $user->createToken('mobile')-> accessToken;
             return response()->json(['success' => $success], $this-> successStatus);
         } else {
-            return response()->json(['error'=>'Unauthorized'], 401);
+            return response()->json(['error'=>'Unauthorised'], 401);
         }
     }
     /**
