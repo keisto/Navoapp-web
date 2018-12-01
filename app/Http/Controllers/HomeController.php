@@ -15,10 +15,11 @@ class HomeController extends Controller
 //    }
 
     public function index() {
-        $operators = $states = DB::table('locations')->distinct('operator')->count('operator');
-        $states = DB::table('locations')->distinct('state')->count('state');
-        $wells = Location::count();
-        $eachStateCount = DB::table('locations')
+        $locations =  DB::table('locations');
+        $operators = $locations->distinct('operator')->count('operator');
+        $states = $locations->distinct('state')->count('state');
+        $wells = $locations->count();
+        $eachStateCount = $locations
             ->select('state as name', DB::raw('count(*) as total'))
             ->groupBy('state')
             ->get();
