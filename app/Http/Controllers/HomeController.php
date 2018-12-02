@@ -16,15 +16,15 @@ class HomeController extends Controller
 
     public function index() {
         $locations =  DB::table('locations');
-        $operators = $locations->distinct('operator')->count('operator');
-        $states = $locations->distinct('state')->count('state');
-        $wells = $locations->count();
+//        $operators = $locations->distinct('operator')->count('operator');
+//        $states = $locations->distinct('state')->count('state');
+//        $wells = $locations->count();
         $eachStateCount = $locations
             ->select('state as name', DB::raw('count(*) as total'))
             ->groupBy('state')
             ->get();
 
-        return view('home', compact('operators', 'states', 'wells', 'eachStateCount'));
+        return view('home', compact('eachStateCount'));
     }
 
     public function test() {

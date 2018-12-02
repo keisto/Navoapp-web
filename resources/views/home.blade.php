@@ -6,7 +6,7 @@
             <div class="statistic">
                 <div class="value">
                     <img src="{{ asset('images/badge.svg') }}" style="width: 50px" class="ui inline image">
-                    {{ number_format($operators,0) }}
+                    40,000+
                 </div>
                 <div class="label">
                     Operators
@@ -15,16 +15,16 @@
             <div class="statistic">
                 <div class="value">
                     <img src="{{ asset('images/punit.svg') }}" style="width: 50px" class="ui inline image">
-                    {{ number_format($wells,0) }}
+                    1,300,000+
                 </div>
                 <div class="label">
-                    Oil well locations
+                    Well locations
                 </div>
             </div>
             <div class="statistic">
                 <div class="value">
                     <img src="{{ asset('images/map.svg') }}" style="width: 50px" class="ui inline image">
-                    {{ number_format($states,0) }}
+                    11
                 </div>
                 <div class="label">
                     States
