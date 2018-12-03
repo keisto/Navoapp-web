@@ -30,11 +30,12 @@
                      <i class="desktop icon"></i><span class="grey-text">version:</span> 1.0
                  </div>
                  <div class="center aligned column">
-                     <i class="apple icon"></i><span class="grey-text">version:</span> 1.0
+                     <i class="apple icon"></i><span class="grey-text">version:</span> 2.0
+                     <span style="position: relative;top: -2px" class="ui mini orange label">Developing - 60%</span>
                  </div>
                  <div class="center aligned column">
                      <i class="android icon"></i><span class="grey-text">version:</span> 1.0
-                     <span style="position: relative;top: -2px" class="ui mini yellow label">Developing</span>
+                     <span style="position: relative;top: -2px" class="ui mini yellow label">Developing - 10%</span>
                  </div>
 
              </div>

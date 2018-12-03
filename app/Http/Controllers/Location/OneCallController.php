@@ -230,4 +230,63 @@ class OneCallController extends Controller
         }
         return null;
     }
+
+    static public function getTownshipSectionRange($location, $latitude, $longitude) {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://legallandconverter.com/cgi-bin/android5c.cgi?username=keisto&password=navoPassword&latitude="
+                . $latitude ."&longitude=". $longitude ."&cmd=gps",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "Postman-Token: ea7364d8-01c6-4552-bb15-30c978a4004a",
+                "cache-control: no-cache"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if (!$err) {
+            $result = array();
+            $array = preg_split('/\r\n|\r|\n/', $response);
+            foreach ($array as $line) {
+                $ar = explode(': ', $line);
+                if (count($ar) > 1) {
+                    $key = $ar[0];
+                    $value = $ar[1];
+                    $result[$key] = $value;
+                }
+            }
+            if (count($result) > 2) {
+                if (optional($result['USATOWNSHIP']) && optional($result['USANORTHSOUTH']) &&
+                    optional($result['USARANGE']) && optional($result['USAEASTWEST']) &&
+                    optional($result['USASECTION'])) {
+                    $ar = array();
+                    $ar['township'] = $result['USATOWNSHIP'] . $result['USANORTHSOUTH'];
+                    $ar['range'] = $result['USARANGE'] . $result['USAEASTWEST'];
+                    $qtr = $result['USAQUARTER'] ? $result['USAQUARTER'] : "";
+                    $ar['section'] = $result['USASECTION'] . $qtr;
+
+                    if ($ar['township'] && $ar['range'] && $ar['section']) {
+                        if ($location->section == null || $location->section == "NULL") {
+                            $location->section = $ar['section'];
+                            $location->range = $ar['range'];
+                            $location->township = $ar['township'];
+                            $location->save();
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }

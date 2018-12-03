@@ -8,6 +8,7 @@ use Jenssegers\Agent\Agent;
 use App\Models\Location;
 use App\Models\Note;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\MockObject\Matcher\InvokedAtLeastOnce;
 
 class NavoController extends Controller
 {
@@ -52,6 +53,10 @@ class NavoController extends Controller
                 }
                 if ($location->city != null) {
                     $directions = OneCallController::getDirections($location);
+                }
+                // Try to get Section, Range, and Township
+                if ($location->section == null || $location->section == "NULL") {
+                    OneCallController::getTownshipSectionRange($location, $location->latitude, $location->longitude);
                 }
             }
 

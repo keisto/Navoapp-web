@@ -96,7 +96,7 @@
     </div>
     <div class="ui card">
         <div class="content">
-            <div class="ui right floated red mini label">High Priority</div>
+            <div class="ui right floated yellow mini label">Medium Priority</div>
             <img src="{{ asset('images/export.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Export Data</div>
             <div class="meta">By each State</div>
@@ -108,10 +108,11 @@
     <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/navigation.svg') }}" style="width: 32px" class="ui floated left image">
-            <div class="header">Well Navigation</div>
+            <div class="ui right floated yellow mini label">Medium Priority</div>
+            <div class="header">Navigation</div>
             <div class="meta">Turn by Turn</div>
             <div class="description">
-                Currently this defaults to whatever you have installed with your phone.
+                Currently this defaults to whatever GPS navigator you have installed with your phone.
             </div>
         </div>
     </div>
