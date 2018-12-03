@@ -139,9 +139,9 @@
             });
 
             // $('.ui.modal').modal({ blurring: false });
-            var well_name = "{{ $location->name }}";
+            var well_name = "{{ strtoupper($location->name) }}";
             var well_api = "{{ $location->api }}";
-            var operator_name = "{{ $location->operator }}";
+            var operator_name = "{{ strtoupper($location->operator) }}";
             var city = "{{ $location->city ? $location->city : ""}}";
             var state = "{{ $location->state ? $location->state : ""}}";
             var cityState = city + ", " + state;
@@ -185,7 +185,7 @@
                                 messageVal = $('#text-message').val();
                                 break;
                             case 'well_operator':
-                                message.val(messageVal + "Operator: \n" + operator_name + "\n");
+                                message.val(messageVal + "Operator: \n" + operator_name.replace(/&amp;/g, "&") + "\n");
                                 messageVal = $('#text-message').val();
                                 break;
                             case 'well_location':

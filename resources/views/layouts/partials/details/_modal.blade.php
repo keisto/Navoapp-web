@@ -33,7 +33,7 @@
                         <div class="ui form">
                             <div class="transparent field">
                                 <label>Phone Number(s)</label>
-                                <textarea id="add_numbers" type="text" name="first-name" placeholder="Use commas (Ex: 123-456-7890, 123-456-7890)" rows="1"></textarea>
+                                <textarea id="add_numbers" type="text" name="first-name" placeholder="Use commas (Ex: 1234567890, 1234567890)" rows="1"></textarea>
                             </div>
                         </div>
                     </div>
