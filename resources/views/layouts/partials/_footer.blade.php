@@ -16,10 +16,10 @@
                  </button>
              </div>
              <div class="six wide center aligned mobile only column">
-                 <p>2018 &copy; Navo</p>
+                 <p>{{ date("Y") }} &copy; Navo</p>
              </div>
              <div class="six wide right aligned tablet only computer only column">
-                 <p>2018 &copy; Navo</p>
+                 <p>{{ date("Y") }} &copy; Navo</p>
              </div>
          </div>
      </div>
@@ -28,14 +28,15 @@
              <div class="three column row">
                  <div class="center aligned column">
                      <i class="desktop icon"></i><span class="grey-text">version:</span> 1.0
+                     <span style="position: relative;top: -2px" class="ui mini orange label">Under Construction</span>
                  </div>
                  <div class="center aligned column">
                      <i class="apple icon"></i><span class="grey-text">version:</span> 2.0
-                     <span style="position: relative;top: -2px" class="ui mini orange label">Developing - 60%</span>
+                     <span style="position: relative;top: -2px" class="ui mini yellow label">Developing</span>
                  </div>
                  <div class="center aligned column">
                      <i class="android icon"></i><span class="grey-text">version:</span> 1.0
-                     <span style="position: relative;top: -2px" class="ui mini yellow label">Developing - 10%</span>
+                     <span style="position: relative;top: -2px" class="ui mini yellow label">Developing</span>
                  </div>
 
              </div>

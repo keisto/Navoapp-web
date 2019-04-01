@@ -1,59 +1,60 @@
 @extends('layouts.app')
 @section('content')
-    @include("layouts.partials._home-header")
-    <div class="ui container">
-        <div class="ui three statistics padder">
-            <div class="statistic">
-                <div class="value">
-                    <img src="{{ asset('images/badge.svg') }}" style="width: 50px" class="ui inline image">
-                    40,000+
-                </div>
-                <div class="label">
-                    Operators
-                </div>
-            </div>
-            <div class="statistic">
-                <div class="value">
-                    <img src="{{ asset('images/punit.svg') }}" style="width: 50px" class="ui inline image">
-                    1,300,000+
-                </div>
-                <div class="label">
-                    Well locations
-                </div>
-            </div>
-            <div class="statistic">
-                <div class="value">
-                    <img src="{{ asset('images/map.svg') }}" style="width: 50px" class="ui inline image">
-                    11
-                </div>
-                <div class="label">
-                    States
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--@include("layouts.partials._home-header")--}}
+    {{--<div class="ui container">--}}
+        {{--<div class="ui three statistics padder">--}}
+            {{--<div class="statistic">--}}
+                {{--<div class="value">--}}
+                    {{--<img src="{{ asset('images/badge.svg') }}" style="width: 50px" class="ui inline image">--}}
+                    {{--40,000+--}}
+                {{--</div>--}}
+                {{--<div class="label">--}}
+                    {{--Operators--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="statistic">--}}
+                {{--<div class="value">--}}
+                    {{--<img src="{{ asset('images/punit.svg') }}" style="width: 50px" class="ui inline image">--}}
+                    {{--1,300,000+--}}
+                {{--</div>--}}
+                {{--<div class="label">--}}
+                    {{--Well locations--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="statistic">--}}
+                {{--<div class="value">--}}
+                    {{--<img src="{{ asset('images/map.svg') }}" style="width: 50px" class="ui inline image">--}}
+                    {{--11--}}
+                {{--</div>--}}
+                {{--<div class="label">--}}
+                    {{--States--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     {{--<div id="video" class="ui embed" data-url="https://player.vimeo.com/video/304031024" data-placeholder="{{ asset('images/well-placeholder.jpg') }}"></div>--}}
-    <div class="ui segment container">
-        <div class="ui header" style="font-weight: normal; color: #838383">
-            Currently we provide service to these states:
-        </div>
-        <div class="ui divided animated list">
-            @foreach($eachStateCount as $state)
-                <div class="item">
-                    <div class="right floated  content">
-                        <div class="ui teal label"><span style="font-weight: normal">Well Count:</span> {{ number_format($state->total,0) }}</div>
-                    </div>
-                    <div class="middle aligned content">
-                        <h3>{{ $state->name }}</h3>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <div class="ui center aligned container" style="padding-top: 20px">
-            <h4>Let us know about your state and we will get it added ASAP.
-                <a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:support@navoapp.io"><i class="mail large icon"></i></a>
-            </h4>
-        </div>
+    <div class="ui segment container center aligned very padded" style="margin-top: 44px">
+        <h1 class="title">Currently Under Development</h1>
+        {{--<div class="ui header" style="font-weight: normal; color: #838383">--}}
+            {{--Currently we provide service to these states:--}}
+        {{--</div>--}}
+        {{--<div class="ui divided animated list">--}}
+            {{--@foreach($eachStateCount as $state)--}}
+                {{--<div class="item">--}}
+                    {{--<div class="right floated  content">--}}
+                        {{--<div class="ui teal label"><span style="font-weight: normal">Well Count:</span> {{ number_format($state->total,0) }}</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="middle aligned content">--}}
+                        {{--<h3>{{ $state->name }}</h3>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--@endforeach--}}
+        {{--</div>--}}
+        {{--<div class="ui center aligned container" style="padding-top: 20px">--}}
+            {{--<h4>Let us know about your state and we will get it added ASAP.--}}
+                {{--<a class="ui blue icon button" style="position: relative; top: -5px" href="mailto:support@navoapp.io"><i class="mail large icon"></i></a>--}}
+            {{--</h4>--}}
+        {{--</div>--}}
     </div>
 
     <div id="simple-search" class="ui container" style="@if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet()) padding-top: 52px; padding-bottom: 32px; @else background-image:none; !important; @endif ">
