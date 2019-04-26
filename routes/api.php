@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
-Route::get('ephemeral', function () {
+Route::get('v-stripe', function () {
     if (!isset($_POST['api_version'])) {
         exit(http_response_code(400));
     }
@@ -32,6 +32,7 @@ Route::get('ephemeral', function () {
     }
 });
 
+Route::post('location', 'API\LocationController@location');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');

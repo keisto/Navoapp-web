@@ -7,34 +7,11 @@
     <div class="ui container" style="display: flex; flex-grow: 1; height: 80%; justify-content: center; flex-direction: column;">
         <div id="home-header" style="display: flex; justify-content: space-around; align-items: center;">
             <h1 class="ui jumbotron inline header" >
-                @guest
-                    <img src="{{ asset('images/navo-logo.svg') }}">
-                    <div class="content">
-                        Oil & Gas Well locator made <u>simple</u>.
-                        <div class="sub header" style="color:rgba(255,255,255,0.7) !important;">Individual and Team Plans available! <a href="{{ route('plans.index') }}">Click Here</a></div>
-                    </div>
-                    @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet())
-                    <a class="ui yellow inline large button" style="margin-left: 32px" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
-                    @else
-                    <a class="ui yellow inline large button" href="{{ url('/register') }}">Sign me up!<i class="right arrow icon"></i></a>
-                    @endif
-                @else
-                    @notsubscribed
-                        <img src="{{ request()->is('subscription') ? asset('images/subscription.svg') : asset('images/package.svg') }}">
-                        <div class="content">
-                            {{ request()->is('subscription') ? "Time to checkout" : "Your one step closer." }}
-                            @if (request()->is('plans'))
-                                Select a plan below.
-                            @endif
-                            <div class="sub header" style="color:#f6e7ff !important;">
-                                {{ request()->is('subscription') ? "Verify your selected plan and add a coupon if you have one." : "Or have someone with a team plan can add you." }}
-                            </div>
-                        </div>
-                        @if (request()->is('/'))
-                            <a href='/plans' class='ui yellow inline button'>Select a Plan<i class='right arrow icon'></i></a>
-                        @endif
-                    @endsubscribed
-                @endguest
+                {{-- <img src="{{ asset('images/navo-logo.svg') }}"> --}}
+                <div class="content">
+                    <h1 class="ui medium header" style="color: white">Oil & Gas Well locator made <u>simple</u>.</h1>
+                    <div class="sub header" style="text-align: right; color:rgba(255,255,255,0.7) !important;">...and for free</div>
+                </div>
             </h1>
 
         </div>

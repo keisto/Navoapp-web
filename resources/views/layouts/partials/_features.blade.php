@@ -12,8 +12,8 @@
             </div>
         </div>
     </div>
-    <div class="ui card">
-        <div class="content">
+    <div class="ui card nav">
+            <div class="content">
             <img src="{{ asset('images/pin-near.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Share</div>
             <div class="meta">By text or email</div>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="ui card">
+    {{-- <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/apple.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Mobile App</div>
@@ -31,7 +31,7 @@
                 Mobile app on <strong>ALL</strong> <u>iOS</u> Devices. <span style="color: indianred;">Version 1 only contains North Dakota.</span>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/update.svg') }}" style="width: 32px" class="ui floated left image">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div class="ui card">
+    {{-- <div class="ui card">
         <div class="content">
             <div class="ui right floated green mini label">Various Plans</div>
             <img src="{{ asset('images/bill.svg') }}" style="width: 32px" class="ui floated left image">
@@ -62,10 +62,8 @@
                 Select favorites, store history, add notes, send via text or copy for email.
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
-
-
 
 <h4 class="ui horizontal divider header padder">
     <i class="bullhorn icon"></i> Coming Soon
@@ -83,7 +81,7 @@
             </div>
         </div>
     </div>
-    <div class="ui card">
+    {{-- <div class="ui card">
         <div class="content">
             <div class="ui right floated red mini label">High Priority</div>
             <img src="{{ asset('images/apple.svg') }}" style="width: 32px" class="ui floated left image">
@@ -104,7 +102,7 @@
                 Choose between JSON, XML, and CSV formats.
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/navigation.svg') }}" style="width: 32px" class="ui floated left image">
@@ -116,7 +114,7 @@
             </div>
         </div>
     </div>
-    <div class="ui card">
+    {{-- <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/analytics.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Well Analytics</div>
@@ -125,17 +123,7 @@
                 View well production information in the best ways possible!
             </div>
         </div>
-    </div>
-    <div class="ui card">
-        <div class="content">
-            <img src="{{ asset('images/timeline.svg') }}" style="width: 32px" class="ui floated left image">
-            <div class="header">Well History</div>
-            <div class="meta">Timeline events</div>
-            <div class="description">
-                View when well status changes.
-            </div>
-        </div>
-    </div>
+    </div> --}}
     <div class="ui card">
         <div class="content">
             <img src="{{ asset('images/more.svg') }}" style="width: 32px" class="ui floated left image">
