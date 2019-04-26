@@ -1,8 +1,8 @@
 
     @guest
         <a class="item" href="{{ route('home') }}" style="padding-top: 4px; padding-bottom: 4px">
-            <img src="{{ asset('images/navo-large-solid.svg') }}" height="28px">
-            Navo
+            <img src="{{ asset('images/navo-icon.svg') }}" height="28px">
+            <span style="font-weight:700; font-size:20px;">Navo</span>
         </a>
     @else
         <a class="item {{ request()->is('search') ? 'active' : '' }}" href="{{ route('search') }}">

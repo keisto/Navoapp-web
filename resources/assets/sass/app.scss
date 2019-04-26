@@ -1,6 +1,6 @@
 body {
   font-family: 'Ubuntu', sans-serif;
-  background-color: #f1f7fa;
+  background-color: white;
   min-height: 100vh;
 }
 
@@ -10,7 +10,22 @@ body {
   background-repeat: no-repeat;
   margin-bottom: 44px;
 }
+.ui.card {
+    position: relative;
+    margin-top: 0.875em;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1) !important;;
+    -webkit-box-shadow: 0 0 20px rgba(255,255,255,0.1) !important;
+    transition-property: all !important;
+    transition-timing-function: ease;
+    transition-duration: 1s !important;
+}
 
+.ui.card:hover {
+    margin-top: 0.175em;
+    margin-bottom: 1.575em;
+    box-shadow: 0 8px 20px rgba(0,0,0,.1) !important;
+    -webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}
 .ui.form .success.message,
 .ui.form .warning.message,
 .ui.form .error.message {
@@ -19,7 +34,8 @@ body {
 .ui.jumbotron {
   //font-size: 3em !important;
   color: white;
-  text-shadow: rgba(0,0,0,.4) 0 2px 15px;
+  // text-shadow: rgba(0,0,0,.4) 0 2px 15px;
+  //
 }
 .ui.input.error>input {
   background-color: #fff6f6;
@@ -81,7 +97,7 @@ body {
   background-image: url("/images/pattern.svg") !important;
   background-color: #1a1f3d !important;
   margin-top: 0 !important;;
-  text-shadow: black 0 1px 10px !important;;
+  // text-shadow: black 0 1px 10px !important;;
   box-shadow: 0 2px 6px rgba(0,0,0,.25) !important;;
 }
 
@@ -138,7 +154,7 @@ body {
   -ms-transition: all 0.75s ease-in;
   transition: all 0.75s ease-in;
   color: white;
-  text-shadow: black 0 2px 15px;
+  // text-shadow: black 0 2px 15px;
 }
 .navo-2 {
   display: none;
@@ -151,7 +167,7 @@ body {
   -ms-transition: all 0.75s ease-in;
   transition: all 0.75s ease-in;
   color: white;
-  text-shadow: black 0 2px 15px;
+  // text-shadow: black 0 2px 15px;
 }
 .page-header h1 {
   color: white;

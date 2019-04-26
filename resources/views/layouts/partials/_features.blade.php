@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="ui card nav">
-            <div class="content">
+        <div class="content">
             <img src="{{ asset('images/pin-near.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">Share</div>
             <div class="meta">By text or email</div>
@@ -46,7 +46,7 @@
         <div class="content">
             <img src="{{ asset('images/shovel.svg') }}" style="width: 32px" class="ui floated left image">
             <div class="header">One Call Information</div>
-            <div class="meta">View example</div>
+            <div class="meta"><a onclick="$('#modal_onecall').modal('show');" style="text-decoration: underline; color: #838383">View example</a></div>
             <div class="description">
                 View nearest city, section, range, and township of the well.
             </div>
@@ -132,6 +132,50 @@
             <div class="description">
                 <a href="mailto:feedback@navoapp.io">Email any requests or suggestions!</a>
             </div>
+        </div>
+    </div>
+</div>
+<div class="ui small modal" id="modal_onecall">
+    <i class="close icon"></i>
+    <div class="header">
+        One Call Information:
+    </div>
+    <div class="image content">
+        @if ((new Jenssegers\Agent\Agent)->isDesktop() || (new Jenssegers\Agent\Agent)->isTablet())
+            <div class="ui medium image">
+                <img src="{{ asset('images/dig.svg') }}">
+            </div>
+        @endif
+        <div class="description">
+            <h4 class="ui header">
+                <i class="hashtag blue mini icon"></i>
+                Section, Range, Township:
+            </h4>
+            <p>Section, Quarter, Range, and Township common details when submitting a dig request to your state.</p>
+            <h4 class="ui header">
+                <i class="map outline violet mini icon"></i>
+                Location County Name
+            </h4>
+            <p>Show county name with City, State.</p>
+            <h4 class="ui header">
+                <i class="map signs brown mini icon"></i>
+                <span class="ui green mini label" style="float: right">Coming Soon</span>
+                Nearest Intersection:
+            </h4>
+            <p>We first try to provide the nearest intersection, but if that cannot be found we will give you a list of nearby streets.</p>
+            <h4 class="ui header">
+                <i class="road mini icon"></i>
+                <span class="ui green mini label" style="float: right">Coming Soon</span>
+                Driving Direction:
+            </h4>
+            <p>Driving are based from off of Google's mapping and should be looked over as some lease roads may not be recognized.</p>
+            <p style="color:#838383;">Please contact our <a href="mailto:support@navoapp.io">support</a> for any questions.</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui positive center labeled icon button">
+            Okay
+            <i class="checkmark icon"></i>
         </div>
     </div>
 </div>
